@@ -38,4 +38,19 @@ public:
     /*Memory*/
     void setMemory(uint16_t address, unsigned char value);
     Register memory[65536];
+
+    /*Opcode*/
+    void LDA_IM(int &cycles);
+};
+
+
+/*Map Opcode*/
+struct opcode {
+    std::string name;
+    unsigned char opcode;
+    void (MOS6502::*operate)(int &cycles);
+};
+
+static opcode operations[] = {
+        {"LDA_IM", 0xA9, &MOS6502::LDA_IM},
 };

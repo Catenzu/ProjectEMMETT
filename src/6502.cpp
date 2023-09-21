@@ -40,16 +40,11 @@ void MOS6502::execute(int cycles)
     while (cycles > 0) {
         unsigned char opcode = fetch(cycles);
 
-        if (opcode == 0xA9) { //Exemple LDA Immediate: 0xA9 0x05 LDA #$05
-            unsigned char value = fetch(cycles);
-
-            a.set(value);
-            if (value == 0)
-                sr._value = sr._value | 0b00000010; //set the 7th bit to 1
-            if (value & 0b10000000) //if the 7th bit is 1
-                sr._value = sr._value | 0b10000000; //set the 0th bit to 1
-            std::cout << "LDA: " << (int) a._value << std::endl;
-        }
+     for (auto &operation : operations)
+            if (operation.opcode == opcode) {
+                (this->*operation.operate)(cycles);
+                break;
+            }
     }
 }
 
