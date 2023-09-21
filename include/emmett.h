@@ -10,18 +10,28 @@
 #include <memory>
 #include <iostream>
 
-class MOS6502 {
-public:
-    MOS6502();
-};
-
 class Register {
 public:
     Register();
 
-    void set(char value);
-    void set(std::string sValue);
+    void set(unsigned char value);
 
     unsigned char _value;
 };
 
+class MOS6502 {
+public:
+    MOS6502();
+
+    /*Register*/
+    Register a;
+    Register x;
+    Register y;
+    Register sp;
+    Register sr;
+    uint16_t pc;
+
+    /*Memory*/
+    void setMemory(uint16_t address, unsigned char value);
+    Register memory[65536];
+};
