@@ -4,15 +4,14 @@
 
 #include "../include/emmett.h"
 
-class MOS6502 {
-    MOS6502()
-    {
-
-    };
-};
-
 int main()
 {
-    std::cout << "Hello, World!" << std::endl;
+    Register a;
+    a.set("0xFF");
+    std::cout << (int) a._value << std::endl;
+    a.set("00001010");
+    std::cout << (int) a._value << std::endl;
+    a.set("11111111");
+    std::cout << (int) a._value << std::endl;
     return 0;
 }
