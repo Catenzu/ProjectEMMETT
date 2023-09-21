@@ -14,6 +14,45 @@ MOS6502::MOS6502()
     pc = 0;
 };
 
+void MOS6502::reset()
+{
+    int pc1 = memory[0xFFFC]._value;
+    int pc2 = memory[0xFFFD]._value;
+
+    pc = (pc2 << 8) | pc1;
+    sp.set(0x00);
+    sr.set(0x00);
+    x.set(0x00);
+    y.set(0x00);
+    a.set(0x00);
+};
+
+unsigned char MOS6502::fetch(int &cycles) //take one cycle
+{
+    uint16_t address = pc;
+    pc++;
+    cycles--;
+    return memory[address]._value;
+};
+
+void MOS6502::execute(int cycles)
+{
+    while (cycles > 0) {
+        unsigned char opcode = fetch(cycles);
+
+        if (opcode == 0xA9) { //Exemple LDA Immediate: 0xA9 0x05 LDA #$05
+            unsigned char value = fetch(cycles);
+
+            a.set(value);
+            if (value == 0)
+                sr._value = sr._value | 0b00000010; //set the 7th bit to 1
+            if (value & 0b10000000) //if the 7th bit is 1
+                sr._value = sr._value | 0b10000000; //set the 0th bit to 1
+            std::cout << "LDA: " << (int) a._value << std::endl;
+        }
+    }
+}
+
 void MOS6502::setMemory(uint16_t address, unsigned char value)
 {
     if (address > 0xFFFF || address < 0xFFFF) {

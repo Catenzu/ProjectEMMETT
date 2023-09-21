@@ -9,17 +9,13 @@ int main()
     MOS6502 cpu;
     Register a;
 
-    a.set(0xFF);
-    std::cout << (int) a._value << std::endl;
-    a.set(0b00001010);
-    std::cout << (int) a._value << std::endl;
-    a.set(0b11111111);
-    std::cout << (int) a._value << std::endl;
+    /*Exemple for LDA Immediate*/
+    cpu.memory[0xFFFC]._value = 0x00;
+    cpu.memory[0xFFFD]._value = 0x10;
+    cpu.memory[0x1000]._value = 0xA9;
+    cpu.memory[0x1001]._value = 0x05;
 
-    uint16_t address = 0xFFFF;
-    std::cout << address << std::endl;
-
-    cpu.setMemory(address, 0xFF);
-    std::cout << cpu.memory[address]._value << std::endl;
+    cpu.reset();
+    cpu.execute(2);
     return 0;
 }
