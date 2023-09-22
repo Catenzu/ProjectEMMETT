@@ -10,6 +10,8 @@
 #include <memory>
 #include <iostream>
 
+int unitTests();
+
 class Register {
 public:
     Register();
@@ -23,9 +25,11 @@ class MOS6502 {
 public:
     MOS6502();
 
+    void clear();
     void reset();
     void execute(int cycles);
     unsigned char fetch(int &cycles);
+    unsigned char getMemory(uint16_t address, int &cycles);
 
     /*Register*/
     Register a; //Accumulator
@@ -41,6 +45,7 @@ public:
 
     /*Opcode*/
     void LDA_IM(int &cycles);
+    void LDA_ZERO(int &cycles);
 };
 
 
@@ -53,4 +58,5 @@ struct opcode {
 
 static opcode operations[] = {
         {"LDA_IM", 0xA9, &MOS6502::LDA_IM},
+        {"LDA_ZERO", 0xA5, &MOS6502::LDA_ZERO},
 };

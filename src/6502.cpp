@@ -14,6 +14,19 @@ MOS6502::MOS6502()
     pc = 0;
 };
 
+void MOS6502::clear()
+{
+    a.set(0);
+    x.set(0);
+    y.set(0);
+    sp.set(0);
+    sr.set(0);
+    pc = 0;
+
+    for (auto & i : memory)
+        i.set(0);
+};
+
 void MOS6502::reset()
 {
     int pc1 = memory[0xFFFC]._value;
@@ -59,4 +72,14 @@ void MOS6502::setMemory(uint16_t address, unsigned char value)
         return;
     }
     memory[address].set(value);
+}
+
+unsigned char MOS6502::getMemory(uint16_t address, int &cycles)
+{
+    if (address > 0xFFFF || address < 0x0000) {
+        std::cerr << "GetMemory: Invalid address at " << address << std::endl;
+        return 0;
+    }
+    cycles--;
+    return memory[address]._value;
 }
