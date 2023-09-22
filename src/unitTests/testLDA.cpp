@@ -16,7 +16,7 @@ int test_LDA(MOS6502 &cpu)
     cpu.execute(2);
 
     if (cpu.a._value != 0x05) {
-        std::cerr << "LDA Immediate: " << (int) cpu.a._value << " != 0x05" << std::endl;
+        std::cerr << "FAILURE: LDA Immediate: " << (int) cpu.a._value << " != 0x05" << std::endl;
     } else
         std::cout << "SUCCESS: LDA Immediate: " << (int) cpu.a._value << std::endl;
 
@@ -32,7 +32,24 @@ int test_LDA(MOS6502 &cpu)
     cpu.execute(3);
 
     if (cpu.a._value != 0x10) {
-        std::cerr << "LDA Zero Page: " << (int) cpu.a._value << " != 0x10" << std::endl;
+        std::cerr << "FAILURE: LDA Zero Page: " << (int) cpu.a._value << " != 0x10" << std::endl;
+    } else
+        std::cout << "SUCCESS: LDA Zero Page: " << (int) cpu.a._value << std::endl;
+
+    /*Exemple for LDA ZeroX Page*/
+    cpu.clear();
+    cpu.memory[0xFFFC]._value = 0x00;
+    cpu.memory[0xFFFD]._value = 0x10;
+    cpu.memory[0x1000]._value = 0xB5;
+    cpu.memory[0x1001]._value = 0x05;
+    cpu.memory[0x000A]._value = 0x10;
+
+    cpu.reset();
+    cpu.x.set(0x05);
+    cpu.execute(4);
+
+    if (cpu.a._value != 0x10) {
+        std::cerr << "FAILURE: LDA Zero Page: " << (int) cpu.a._value << " != 0x10" << std::endl;
     } else
         std::cout << "SUCCESS: LDA Zero Page: " << (int) cpu.a._value << std::endl;
 }

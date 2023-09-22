@@ -48,6 +48,18 @@ unsigned char MOS6502::fetch(int &cycles) //take one cycle
     return memory[address]._value;
 };
 
+unsigned char MOS6502::fetchX(int &cycles) //take one cycle
+{;
+    cycles--;
+    return x._value;
+};
+
+unsigned char MOS6502::fetchY(int &cycles) //take one cycle
+{
+    cycles--;
+    return y._value;
+};
+
 void MOS6502::execute(int cycles)
 {
     while (cycles > 0) {

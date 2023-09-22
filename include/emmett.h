@@ -29,6 +29,8 @@ public:
     void reset();
     void execute(int cycles);
     unsigned char fetch(int &cycles);
+    unsigned char fetchX(int &cycles);
+    unsigned char fetchY(int &cycles);
     unsigned char getMemory(uint16_t address, int &cycles);
 
     /*Register*/
@@ -46,6 +48,7 @@ public:
     /*Opcode*/
     void LDA_IM(int &cycles);
     void LDA_ZERO(int &cycles);
+    void LDA_ZEROX(int &cycles);
 };
 
 
@@ -59,4 +62,5 @@ struct opcode {
 static opcode operations[] = {
         {"LDA_IM", 0xA9, &MOS6502::LDA_IM},
         {"LDA_ZERO", 0xA5, &MOS6502::LDA_ZERO},
+        {"LDA_ZEROX", 0xB5, &MOS6502::LDA_ZEROX},
 };
