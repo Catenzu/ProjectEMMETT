@@ -7,7 +7,9 @@
 int main()
 {
     MOS6502 cpu;
-    Register a;
+
+    if (unitTests())
+        return 0;
 
     /*//Exemple for LDA Immediate
     cpu.memory[0xFFFC]._value = 0x00;
