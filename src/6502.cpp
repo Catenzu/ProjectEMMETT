@@ -60,7 +60,7 @@ unsigned char MOS6502::fetchY(int &cycles) //take one cycle
     return y._value;
 };
 
-void MOS6502::execute(int cycles)
+int MOS6502::execute(int cycles)
 {
     while (cycles > 0) {
         unsigned char opcode = fetch(cycles);
@@ -71,6 +71,19 @@ void MOS6502::execute(int cycles)
                 break;
             }
     }
+    return cycles;
+}
+
+void MOS6502::setZeroFlag(unsigned char value)
+{
+    if (value == 0)
+        sr._value = sr._value | 0b00000010; //set the 7th bit to 1
+}
+
+void MOS6502::setNegativeFlag(unsigned char value)
+{
+    if (value & 0b10000000) //if the 7th bit is 1
+        sr._value = sr._value | 0b10000000; //set the 0th bit to 1
 }
 
 void MOS6502::setMemory(uint16_t address, unsigned char value)
