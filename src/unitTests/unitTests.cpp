@@ -11,5 +11,6 @@ int unitTests()
 
     cpu._isInDebugMode = true;
     test_LDA(cpu);
+    test_ADC(cpu);
     return 1;
 }
