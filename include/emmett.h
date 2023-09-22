@@ -54,7 +54,6 @@ public:
 
     /*Opcode*/
     void ADC_IM(int &cycles);
-    void ADC_IM(int &cycles);
     void ADC_ZERO(int &cycles);
     void ADC_ZEROX(int &cycles);
     void ADC_ABS(int &cycles);
@@ -78,7 +77,6 @@ struct opcode {
 };
 
 static opcode operations[] = {
-        {"ADC_IM", 0x69, &MOS6502::ADC_IM},
         {"ADC_IM", 0x69, &MOS6502::ADC_IM},
         {"ADC_ZERO", 0x65, &MOS6502::ADC_ZERO},
         {"ADC_ZEROX", 0x75, &MOS6502::ADC_ZEROX},
