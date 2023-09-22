@@ -29,6 +29,7 @@ public:
     void reset();
     int execute(int cycles);
     unsigned char aluAddition(unsigned char componentA, unsigned char componentB, int &cycles);
+    bool _aluAdditionCarry; //not the carry flag, but the carry of the addition
     unsigned char fetch(int &cycles);
     unsigned char getMemory(uint16_t address, int &cycles);
 
@@ -36,16 +37,16 @@ public:
     bool _isInDebugMode;
 
     /*Register*/
-    Register a; //Accumulator
-    Register x;
-    Register y;
-    Register sp; //Stack Pointer
-    Register sr; //Status Register
-    uint16_t pc; //Program Counter
+    Register _a; //Accumulator
+    Register _x;
+    Register _y;
+    Register _sp; //Stack Pointer
+    Register _sr; //Status Register
+    uint16_t _pc; //Program Counter
 
     /*Memory*/
     void setMemory(uint16_t address, unsigned char value);
-    Register memory[65536];
+    Register _memory[65536];
 
     /*Status Register*/
     void setZeroFlag(unsigned char value);
@@ -58,6 +59,9 @@ public:
     void LDA_ZEROX(int &cycles);
     void LDA_ABS(int &cycles);
     void LDA_ABSX(int &cycles);
+    void LDA_ABSY(int &cycles);
+    void LDA_INDX(int &cycles);
+    void LDA_INDY(int &cycles);
 };
 
 
@@ -75,4 +79,7 @@ static opcode operations[] = {
         {"LDA_ZEROX", 0xB5, &MOS6502::LDA_ZEROX},
         {"LDA_ABS", 0xAD, &MOS6502::LDA_ABS},
         {"LDA_ABSX", 0xBD, &MOS6502::LDA_ABSX},
+        {"LDA_ABSY", 0xB9, &MOS6502::LDA_ABSY},
+        {"LDA_INDX", 0xA1, &MOS6502::LDA_INDX},
+        {"LDA_INDY", 0xB1, &MOS6502::LDA_INDY},
 };
