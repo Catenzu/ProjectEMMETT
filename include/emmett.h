@@ -28,10 +28,12 @@ public:
     void clear();
     void reset();
     int execute(int cycles);
+    unsigned char aluAddition(unsigned char componentA, unsigned char componentB, int &cycles);
     unsigned char fetch(int &cycles);
-    unsigned char fetchX(int &cycles);
-    unsigned char fetchY(int &cycles);
     unsigned char getMemory(uint16_t address, int &cycles);
+
+    /*inDebug*/
+    bool _isInDebugMode;
 
     /*Register*/
     Register a; //Accumulator
@@ -54,6 +56,7 @@ public:
     void LDA_ZERO(int &cycles);
     void LDA_ZEROX(int &cycles);
     void LDA_ABS(int &cycles);
+    void LDA_ABSX(int &cycles);
 };
 
 
@@ -69,4 +72,5 @@ static opcode operations[] = {
         {"LDA_ZERO", 0xA5, &MOS6502::LDA_ZERO},
         {"LDA_ZEROX", 0xB5, &MOS6502::LDA_ZEROX},
         {"LDA_ABS", 0xAD, &MOS6502::LDA_ABS},
+        {"LDA_ABSX", 0xBD, &MOS6502::LDA_ABSX},
 };

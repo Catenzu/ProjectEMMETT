@@ -9,6 +9,7 @@ int unitTests()
 {
     MOS6502 cpu;
 
+    cpu._isInDebugMode = true;
     test_LDA(cpu);
     return 1;
 }
