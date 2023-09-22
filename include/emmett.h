@@ -55,6 +55,9 @@ public:
     void LDA_ZEROX(int &cycles);
     void LDA_ABS(int &cycles);
     void ADC_IM(int &cycles);
+    void ADC_ZERO(int &cycles);
+    void ADC_ZEROX(int &cycles);
+    void ADC_ABS(int &cycles);
 };
 
 
@@ -71,4 +74,7 @@ static opcode operations[] = {
         {"LDA_ZEROX", 0xB5, &MOS6502::LDA_ZEROX},
         {"LDA_ABS", 0xAD, &MOS6502::LDA_ABS},
         {"ADC_IM", 0x69, &MOS6502::ADC_IM},
+        {"ADC_ZERO", 0x65, &MOS6502::ADC_ZERO},
+        {"ADC_ZEROX", 0x75, &MOS6502::ADC_ZEROX},
+        {"ADC_ABS", 0x6D, &MOS6502::ADC_ABS},
 };
