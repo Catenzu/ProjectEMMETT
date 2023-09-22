@@ -12,6 +12,7 @@ MOS6502::MOS6502()
     sp.set(0);
     sr.set(0);
     pc = 0;
+    _isInDebugMode = false;
 };
 
 void MOS6502::clear()
@@ -48,42 +49,42 @@ unsigned char MOS6502::fetch(int &cycles) //take one cycle
     return memory[address]._value;
 };
 
-unsigned char MOS6502::fetchX(int &cycles) //take one cycle
-{;
-    cycles--;
-    return x._value;
-};
-
-unsigned char MOS6502::fetchY(int &cycles) //take one cycle
-{
-    cycles--;
-    return y._value;
-};
-
 int MOS6502::execute(int cycles)
 {
     while (cycles > 0) {
         unsigned char opcode = fetch(cycles);
 
-     for (auto &operation : operations)
+        for (auto &operation : operations)
             if (operation.opcode == opcode) {
                 (this->*operation.operate)(cycles);
                 break;
             }
+        if (_isInDebugMode) //debug mode, to see if it's the exact number of cycles
+            break;
     }
     return cycles;
+}
+
+unsigned char MOS6502::aluAddition(unsigned char componentA, unsigned char componentB, int &cycles)
+{
+    uint16_t result = componentA + componentB;
+    unsigned char result8 = result & 0xFF;
+    if (result > 0xFF)
+        sr._value = sr._value | 0b00000001; //set the 0th bit to 1
+    cycles--;
+    return result8;
 }
 
 void MOS6502::setZeroFlag(unsigned char value)
 {
     if (value == 0)
-        sr._value = sr._value | 0b00000010; //set the 7th bit to 1
+        sr._value = sr._value | 0b00000010; //set the 1th bit to 1
 }
 
 void MOS6502::setNegativeFlag(unsigned char value)
 {
     if (value & 0b10000000) //if the 7th bit is 1
-        sr._value = sr._value | 0b10000000; //set the 0th bit to 1
+        sr._value = sr._value | 0b10000000; //set the 7th bit to 1
 }
 
 void MOS6502::setMemory(uint16_t address, unsigned char value)

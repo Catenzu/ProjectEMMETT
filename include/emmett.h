@@ -28,10 +28,12 @@ public:
     void clear();
     void reset();
     int execute(int cycles);
+    unsigned char aluAddition(unsigned char componentA, unsigned char componentB, int &cycles);
     unsigned char fetch(int &cycles);
-    unsigned char fetchX(int &cycles);
-    unsigned char fetchY(int &cycles);
     unsigned char getMemory(uint16_t address, int &cycles);
+
+    /*inDebug*/
+    bool _isInDebugMode;
 
     /*Register*/
     Register a; //Accumulator
@@ -50,14 +52,17 @@ public:
     void setNegativeFlag(unsigned char value);
 
     /*Opcode*/
-    void LDA_IM(int &cycles);
-    void LDA_ZERO(int &cycles);
-    void LDA_ZEROX(int &cycles);
-    void LDA_ABS(int &cycles);
+    void ADC_IM(int &cycles);
     void ADC_IM(int &cycles);
     void ADC_ZERO(int &cycles);
     void ADC_ZEROX(int &cycles);
     void ADC_ABS(int &cycles);
+  
+    void LDA_IM(int &cycles);
+    void LDA_ZERO(int &cycles);
+    void LDA_ZEROX(int &cycles);
+    void LDA_ABS(int &cycles);
+    void LDA_ABSX(int &cycles);
 };
 
 
@@ -69,12 +74,14 @@ struct opcode {
 };
 
 static opcode operations[] = {
-        {"LDA_IM", 0xA9, &MOS6502::LDA_IM},
-        {"LDA_ZERO", 0xA5, &MOS6502::LDA_ZERO},
-        {"LDA_ZEROX", 0xB5, &MOS6502::LDA_ZEROX},
-        {"LDA_ABS", 0xAD, &MOS6502::LDA_ABS},
+        {"ADC_IM", 0x69, &MOS6502::ADC_IM},
         {"ADC_IM", 0x69, &MOS6502::ADC_IM},
         {"ADC_ZERO", 0x65, &MOS6502::ADC_ZERO},
         {"ADC_ZEROX", 0x75, &MOS6502::ADC_ZEROX},
         {"ADC_ABS", 0x6D, &MOS6502::ADC_ABS},
+        {"LDA_IM", 0xA9, &MOS6502::LDA_IM},
+        {"LDA_ZERO", 0xA5, &MOS6502::LDA_ZERO},
+        {"LDA_ZEROX", 0xB5, &MOS6502::LDA_ZEROX},
+        {"LDA_ABS", 0xAD, &MOS6502::LDA_ABS},
+        {"LDA_ABSX", 0xBD, &MOS6502::LDA_ABSX},
 };

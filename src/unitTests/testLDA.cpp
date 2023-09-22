@@ -56,7 +56,7 @@ int test_LDA(MOS6502 &cpu)
     } else
         std::cout << "SUCCESS: LDA Zero Page X: " << (int) cpu.a._value << std::endl;
 
-    /*Exemple for LDA Absolute Page*/
+    /*Exemple for LDA Absolute*/
     cpu.clear();
     cpu.memory[0xFFFC]._value = 0x00;
     cpu.memory[0xFFFD]._value = 0x10;
@@ -69,7 +69,43 @@ int test_LDA(MOS6502 &cpu)
     if ((cyclesUsed = cpu.execute(4)) != 0)
         std::cerr << "FAILURE: LDA Absolute cycles Used: " << cyclesUsed << " != 0" << std::endl;
     if (cpu.a._value != 0x16) {
-        std::cerr << "FAILURE: LDA Absolute Page: " << (int) cpu.a._value << " != 0x10" << std::endl;
+        std::cerr << "FAILURE: LDA Absolute: " << (int) cpu.a._value << " != 0x16" << std::endl;
     } else
-        std::cout << "SUCCESS: LDA Absolute Page: " << (int) cpu.a._value << std::endl;
+        std::cout << "SUCCESS: LDA Absolute: " << (int) cpu.a._value << std::endl;
+
+    /*Exemple for LDA Absolute X*/
+    cpu.clear();
+    cpu.memory[0xFFFC]._value = 0x00;
+    cpu.memory[0xFFFD]._value = 0x10;
+    cpu.memory[0x1000]._value = 0xBD;
+    cpu.memory[0x1001]._value = 0xFA;
+    cpu.memory[0x1002]._value = 0x10;
+    cpu.memory[0x10FF]._value = 0x16;
+
+    cpu.reset();
+    cpu.x.set(0x05);
+    if ((cyclesUsed = cpu.execute(4)) != 0)
+        std::cerr << "FAILURE: LDA Absolute X cycles Used: " << cyclesUsed << " != 0" << std::endl;
+    if (cpu.a._value != 0x16) {
+        std::cerr << "FAILURE: LDA Absolute X: " << (int) cpu.a._value << " != 0x16" << std::endl;
+    } else
+        std::cout << "SUCCESS: LDA Absolute X: " << (int) cpu.a._value << std::endl;
+
+    /*Exemple for LDA Absolute X*/
+    cpu.clear();
+    cpu.memory[0xFFFC]._value = 0x00;
+    cpu.memory[0xFFFD]._value = 0x10;
+    cpu.memory[0x1000]._value = 0xBD;
+    cpu.memory[0x1001]._value = 0xFA;
+    cpu.memory[0x1002]._value = 0x10;
+    cpu.memory[0x1100]._value = 0x16;
+
+    cpu.reset();
+    cpu.x.set(0x06);
+    if ((cyclesUsed = cpu.execute(5)) != 0)
+        std::cerr << "FAILURE: LDA Absolute X (page crossed) cycles Used: " << cyclesUsed << " != 0" << std::endl;
+    if (cpu.a._value != 0x16) {
+        std::cerr << "FAILURE: LDA Absolute X (page crossed): " << (int) cpu.a._value << " != 0x16" << std::endl;
+    } else
+        std::cout << "SUCCESS: LDA Absolute X (page crossed): " << (int) cpu.a._value << std::endl;
 }
