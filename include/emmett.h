@@ -41,6 +41,7 @@ public:
 
     /*Opcode*/
     void LDA_IM(int &cycles);
+    void ADC_IM(int &cycles);
 };
 
 
@@ -53,4 +54,5 @@ struct opcode {
 
 static opcode operations[] = {
         {"LDA_IM", 0xA9, &MOS6502::LDA_IM},
+        {"ADC_IM", 0x69, &MOS6502::ADC_IM},
 };
