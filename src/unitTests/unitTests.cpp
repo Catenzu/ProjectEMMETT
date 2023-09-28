@@ -17,5 +17,6 @@ int unitTests()
     test_LDY(cpu);
     std::cout << "------------------------------" << std::endl;
     test_ADC(cpu);
+    test_AND(cpu);
     return 1;
 }

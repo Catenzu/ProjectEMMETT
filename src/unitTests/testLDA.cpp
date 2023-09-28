@@ -201,6 +201,5 @@ int test_LDA(MOS6502 &cpu)
         std::cerr << "FAILURE: LDA Indirect Y (page crossed): " << (int) cpu._a._value << " != 0x16" << std::endl;
     } else
         std::cout << "SUCCESS: LDA Indirect Y (page crossed): " << (int) cpu._a._value << std::endl;
-
     return 0;
 }
