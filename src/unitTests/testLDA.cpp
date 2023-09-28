@@ -72,4 +72,6 @@ int test_LDA(MOS6502 &cpu)
         std::cerr << "FAILURE: LDA Absolute Page: " << (int) cpu.a._value << " != 0x10" << std::endl;
     } else
         std::cout << "SUCCESS: LDA Absolute Page: " << (int) cpu.a._value << std::endl;
+
+    return 0;
 }

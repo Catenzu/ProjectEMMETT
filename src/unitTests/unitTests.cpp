@@ -11,5 +11,6 @@ int unitTests()
 
     test_LDA(cpu);
     test_ADC(cpu);
+    test_AND(cpu);
     return 1;
 }
