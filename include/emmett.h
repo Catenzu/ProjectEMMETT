@@ -66,6 +66,18 @@ public:
     void LDA_ABSY(int &cycles);
     void LDA_INDX(int &cycles);
     void LDA_INDY(int &cycles);
+
+    void LDX_IM(int &cycles);
+    void LDX_ZERO(int &cycles);
+    void LDX_ZEROY(int &cycles);
+    void LDX_ABS(int &cycles);
+    void LDX_ABSY(int &cycles);
+
+    void LDY_IM(int &cycles);
+    void LDY_ZERO(int &cycles);
+    void LDY_ZEROX(int &cycles);
+    void LDY_ABS(int &cycles);
+    void LDY_ABSX(int &cycles);
 };
 
 
@@ -89,4 +101,14 @@ static opcode operations[] = {
         {"LDA_ABSY", 0xB9, &MOS6502::LDA_ABSY},
         {"LDA_INDX", 0xA1, &MOS6502::LDA_INDX},
         {"LDA_INDY", 0xB1, &MOS6502::LDA_INDY},
+        {"LDX_IM", 0xA2, &MOS6502::LDX_IM},
+        {"LDX_ZERO", 0xA6, &MOS6502::LDX_ZERO},
+        {"LDX_ZEROY", 0xB6, &MOS6502::LDX_ZEROY},
+        {"LDX_ABS", 0xAE, &MOS6502::LDX_ABS},
+        {"LDX_ABSY", 0xBE, &MOS6502::LDX_ABSY},
+        {"LDY_IM", 0xA0, &MOS6502::LDY_IM},
+        {"LDY_ZERO", 0xA4, &MOS6502::LDY_ZERO},
+        {"LDY_ZEROX", 0xB4, &MOS6502::LDY_ZEROX},
+        {"LDY_ABS", 0xAC, &MOS6502::LDY_ABS},
+        {"LDY_ABSX", 0xBC, &MOS6502::LDY_ABSX},
 };

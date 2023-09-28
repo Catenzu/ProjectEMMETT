@@ -23,7 +23,7 @@ void MOS6502::ADC_IM(int &cycles)
         _sr._value = _sr._value | 0b01000000; //set the 6th bit to 1
 
     _a.set(result8);
-    std::cout << "ADC: " << (int) _a._value << std::endl;
+    std::cout << "--ADC: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::ADC_ZERO(int &cycles)
@@ -42,7 +42,7 @@ void MOS6502::ADC_ZERO(int &cycles)
     if (_a._value ^ value & 0x80 && _a._value ^ result8 & 0x80) //if the sign of the two values is different and the sign of the two values and the result is different
         _sr._value = _sr._value | 0b01000000; //set the 6th bit to 1
     _a.set(result8);
-    std::cout << "ADC ZERO: " << (int) _a._value << std::endl;
+    std::cout << "--ADC ZERO: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::ADC_ZEROX(int &cycles)

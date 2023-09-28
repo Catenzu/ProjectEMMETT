@@ -81,7 +81,7 @@ void MOS6502::LDA_ABSY(int &cycles)
 
     unsigned char address2 = fetch(cycles); //1cycle
     uint16_t completeAddress = (uint16_t) address + ((uint16_t)address2 * 256);
-    if (_aluAdditionCarry) {//if the sum of address1 and X has _a carry,
+    if (_aluAdditionCarry) {//if the sum of address1 and X has a carry,
         cycles--;       // we need to add the carry to the second byte of the address, taking one cycle (HW Simulation)
         completeAddress += 0x0100;
     }
