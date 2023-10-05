@@ -18,6 +18,10 @@ int unitTests()
     std::cout << "------------------------------" << std::endl;
     test_STA(cpu);
     std::cout << "------------------------------" << std::endl;
+    test_STX(cpu);
+    std::cout << "------------------------------" << std::endl;
+    test_STY(cpu);
+    std::cout << "------------------------------" << std::endl;
     //test_ADC(cpu);
     //std::cout << "------------------------------" << std::endl;
     //test_AND(cpu);

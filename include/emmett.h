@@ -89,6 +89,14 @@ public:
     void STA_ABSY(int &cycles);
     void STA_INDX(int &cycles);
     void STA_INDY(int &cycles);
+
+    void STX_ZERO(int &cycles);
+    void STX_ZEROY(int &cycles);
+    void STX_ABS(int &cycles);
+
+    void STY_ZERO(int &cycles);
+    void STY_ZEROX(int &cycles);
+    void STY_ABS(int &cycles);
 };
 
 
@@ -130,4 +138,10 @@ static opcode operations[] = {
         {"STA_ABSY", 0x99, &MOS6502::STA_ABSY},
         {"STA_INDX", 0x81, &MOS6502::STA_INDX},
         {"STA_INDY", 0x91, &MOS6502::STA_INDY},
+        {"STX_ZERO", 0x86, &MOS6502::STX_ZERO},
+        {"STX_ZEROY", 0x96, &MOS6502::STX_ZEROY},
+        {"STX_ABS", 0x8E, &MOS6502::STX_ABS},
+        {"STY_ZERO", 0x84, &MOS6502::STY_ZERO},
+        {"STY_ZEROX", 0x94, &MOS6502::STY_ZEROX},
+        {"STY_ABS", 0x8C, &MOS6502::STY_ABS},
 };

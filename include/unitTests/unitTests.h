@@ -17,3 +17,5 @@ int test_AND(MOS6502 &cpu);
 int test_LDX(MOS6502 &cpu);
 int test_LDY(MOS6502 &cpu);
 int test_STA(MOS6502 &cpu);
+int test_STX(MOS6502 &cpu);
+int test_STY(MOS6502 &cpu);
