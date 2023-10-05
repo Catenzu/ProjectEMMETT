@@ -113,3 +113,13 @@ unsigned char MOS6502::getMemory(uint16_t address, int &cycles)
     cycles--;
     return _memory[address]._value;
 }
+
+void MOS6502::setMemory(uint16_t address, unsigned char value, int &cycles)
+{
+    if (address > 0xFFFF || address < 0x0000) {
+        std::cerr << "SetMemory: Invalid address at " << address << std::endl;
+        return;
+    }
+    _memory[address].set(value);
+    cycles--;
+}

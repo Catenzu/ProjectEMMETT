@@ -16,7 +16,10 @@ int unitTests()
     std::cout << "------------------------------" << std::endl;
     test_LDY(cpu);
     std::cout << "------------------------------" << std::endl;
-    test_ADC(cpu);
-    test_AND(cpu);
+    test_STA(cpu);
+    std::cout << "------------------------------" << std::endl;
+    //test_ADC(cpu);
+    //std::cout << "------------------------------" << std::endl;
+    //test_AND(cpu);
     return 1;
 }

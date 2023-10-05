@@ -32,6 +32,7 @@ public:
     bool _aluAdditionCarry; //not the carry flag, but the carry of the addition
     unsigned char fetch(int &cycles);
     unsigned char getMemory(uint16_t address, int &cycles);
+    void setMemory(uint16_t address, unsigned char value, int &cycles);
 
     /*inDebug*/
     bool _isInDebugMode;
@@ -80,6 +81,14 @@ public:
     void LDY_ZEROX(int &cycles);
     void LDY_ABS(int &cycles);
     void LDY_ABSX(int &cycles);
+
+    void STA_ZERO(int &cycles);
+    void STA_ZEROX(int &cycles);
+    void STA_ABS(int &cycles);
+    void STA_ABSX(int &cycles);
+    void STA_ABSY(int &cycles);
+    void STA_INDX(int &cycles);
+    void STA_INDY(int &cycles);
 };
 
 
@@ -114,4 +123,11 @@ static opcode operations[] = {
         {"LDY_ZEROX", 0xB4, &MOS6502::LDY_ZEROX},
         {"LDY_ABS", 0xAC, &MOS6502::LDY_ABS},
         {"LDY_ABSX", 0xBC, &MOS6502::LDY_ABSX},
+        {"STA_ZERO", 0x85, &MOS6502::STA_ZERO},
+        {"STA_ZEROX", 0x95, &MOS6502::STA_ZEROX},
+        {"STA_ABS", 0x8D, &MOS6502::STA_ABS},
+        {"STA_ABSX", 0x9D, &MOS6502::STA_ABSX},
+        {"STA_ABSY", 0x99, &MOS6502::STA_ABSY},
+        {"STA_INDX", 0x81, &MOS6502::STA_INDX},
+        {"STA_INDY", 0x91, &MOS6502::STA_INDY},
 };
