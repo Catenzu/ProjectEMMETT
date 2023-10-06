@@ -104,6 +104,11 @@ public:
     void TYA(int &cycles);
     void TSX(int &cycles);
     void TXS(int &cycles);
+
+    void PHA(int &cycles);
+    void PHP(int &cycles);
+    void PLA(int &cycles);
+    void PLP(int &cycles);
 };
 
 
@@ -157,4 +162,8 @@ static opcode operations[] = {
         {"TYA", 0x98, &MOS6502::TYA},
         {"TSX", 0xBA, &MOS6502::TSX},
         {"TXS", 0x9A, &MOS6502::TXS},
+        {"PHA", 0x48, &MOS6502::PHA},
+        {"PHP", 0x08, &MOS6502::PHP},
+        {"PLA", 0x68, &MOS6502::PLA},
+        {"PLP", 0x28, &MOS6502::PLP},
 };

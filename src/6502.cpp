@@ -9,7 +9,7 @@ MOS6502::MOS6502()
     _a.set(0);
     _x.set(0);
     _y.set(0);
-    _sp.set(0);
+    _sp.set(0xFF);
     _sr.set(0);
     _pc = 0;
     _isInDebugMode = false;
@@ -21,7 +21,7 @@ void MOS6502::clear()
     _a.set(0);
     _x.set(0);
     _y.set(0);
-    _sp.set(0);
+    _sp.set(0xFF);
     _sr.set(0);
     _pc = 0;
     _aluAdditionCarry = false;
@@ -36,7 +36,7 @@ void MOS6502::reset()
     int pc2 = _memory[0xFFFD]._value;
 
     _pc = (pc2 << 8) | pc1;
-    _sp.set(0x00);
+    _sp.set(0xFF);
     _sr.set(0x00);
     _x.set(0x00);
     _y.set(0x00);

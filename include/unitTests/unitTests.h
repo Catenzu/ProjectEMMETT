@@ -20,3 +20,4 @@ int test_STA(MOS6502 &cpu);
 int test_STX(MOS6502 &cpu);
 int test_STY(MOS6502 &cpu);
 int test_TRANSFER(MOS6502 &cpu);
+int test_PUSHPULL(MOS6502 &cpu);
