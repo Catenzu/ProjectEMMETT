@@ -9,6 +9,7 @@ int test_LDY(MOS6502 &cpu)
     int cyclesUsed = 0;
 
     /*Exemple for LDY Immediate*/
+    cpu.clear();
     cpu._memory[0xFFFC]._value = 0x00;
     cpu._memory[0xFFFD]._value = 0x10;
     cpu._memory[0x1000]._value = 0xA0;

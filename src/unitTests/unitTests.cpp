@@ -22,6 +22,8 @@ int unitTests()
     std::cout << "------------------------------" << std::endl;
     test_STY(cpu);
     std::cout << "------------------------------" << std::endl;
+    test_TRANSFER(cpu);
+    std::cout << "------------------------------" << std::endl;
     //test_ADC(cpu);
     //std::cout << "------------------------------" << std::endl;
     //test_AND(cpu);
