@@ -102,6 +102,8 @@ public:
     void TAY(int &cycles);
     void TXA(int &cycles);
     void TYA(int &cycles);
+    void TSX(int &cycles);
+    void TXS(int &cycles);
 };
 
 
@@ -153,4 +155,6 @@ static opcode operations[] = {
         {"TAY", 0xA8, &MOS6502::TAY},
         {"TXA", 0x8A, &MOS6502::TXA},
         {"TYA", 0x98, &MOS6502::TYA},
+        {"TSX", 0xBA, &MOS6502::TSX},
+        {"TXS", 0x9A, &MOS6502::TXS},
 };

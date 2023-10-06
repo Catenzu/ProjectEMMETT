@@ -58,5 +58,33 @@ int test_TRANSFER(MOS6502 &cpu)
     } else {
         std::cout << "SUCCESS: TXA: " << (int) cpu._a._value << std::endl;
     }
+
+    cpu.clear();
+    cpu._memory[0xFFFC]._value = 0x00;
+    cpu._memory[0xFFFD]._value = 0x10;
+    cpu._memory[0x1000]._value = 0xBA;
+    cpu.reset();
+    cpu._sp._value = 0x10;
+    if ((cyclesUsed = cpu.execute(2)) != 0)
+        std::cerr << "FAILURE: TSX cycles Used: " << cyclesUsed << " != 0" << std::endl;
+    if (cpu._x._value != 0x10) {
+        std::cerr << "FAILURE: TSX: " << (int) cpu._x._value << " != 0x10" << std::endl;
+    } else {
+        std::cout << "SUCCESS: TSX: " << (int) cpu._x._value << std::endl;
+    }
+
+    cpu.clear();
+    cpu._memory[0xFFFC]._value = 0x00;
+    cpu._memory[0xFFFD]._value = 0x10;
+    cpu._memory[0x1000]._value = 0x9A;
+    cpu.reset();
+    cpu._x._value = 0x10;
+    if ((cyclesUsed = cpu.execute(2)) != 0)
+        std::cerr << "FAILURE: TXS cycles Used: " << cyclesUsed << " != 0" << std::endl;
+    if (cpu._sp._value != 0x10) {
+        std::cerr << "FAILURE: TXS: " << (int) cpu._sp._value << " != 0x10" << std::endl;
+    } else {
+        std::cout << "SUCCESS: TXS: " << (int) cpu._sp._value << std::endl;
+    }
     return 0;
 }
