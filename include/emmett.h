@@ -97,6 +97,11 @@ public:
     void STY_ZERO(int &cycles);
     void STY_ZEROX(int &cycles);
     void STY_ABS(int &cycles);
+
+    void TAX(int &cycles);
+    void TAY(int &cycles);
+    void TXA(int &cycles);
+    void TYA(int &cycles);
 };
 
 
@@ -144,4 +149,8 @@ static opcode operations[] = {
         {"STY_ZERO", 0x84, &MOS6502::STY_ZERO},
         {"STY_ZEROX", 0x94, &MOS6502::STY_ZEROX},
         {"STY_ABS", 0x8C, &MOS6502::STY_ABS},
+        {"TAX", 0xAA, &MOS6502::TAX},
+        {"TAY", 0xA8, &MOS6502::TAY},
+        {"TXA", 0x8A, &MOS6502::TXA},
+        {"TYA", 0x98, &MOS6502::TYA},
 };

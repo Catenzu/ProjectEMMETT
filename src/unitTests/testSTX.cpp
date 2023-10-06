@@ -9,6 +9,7 @@ int test_STX(MOS6502 &cpu)
     int cyclesUsed = 0;
 
     //zero page
+    cpu.clear();
     cpu._memory[0xFFFC]._value = 0x00;
     cpu._memory[0xFFFD]._value = 0x10;
     cpu._memory[0x1000]._value = 0x86;
