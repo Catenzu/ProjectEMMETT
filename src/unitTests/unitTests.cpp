@@ -26,6 +26,8 @@ int unitTests()
     std::cout << "------------------------------" << std::endl;
     test_PUSHPULL(cpu);
     std::cout << "------------------------------" << std::endl;
+    test_JMP(cpu);
+    std::cout << "------------------------------" << std::endl;
     //test_ADC(cpu);
     //std::cout << "------------------------------" << std::endl;
     //test_AND(cpu);
