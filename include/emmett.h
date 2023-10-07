@@ -57,8 +57,25 @@ public:
     void ADC_ZERO(int &cycles);
     void ADC_ZEROX(int &cycles);
     void ADC_ABS(int &cycles);
+    void ADC_ABSX(int &cycles);
+    void ADC_ABSY(int &cycles);
+    void ADC_INDX(int &cycles);
+    void ADC_INDY(int &cycles);
   
     void AND_IM(int &cycles);
+    void AND_ZERO(int &cycles);
+    void AND_ZEROX(int &cycles);
+    void AND_ABS(int &cycles);
+    void AND_ABSX(int &cycles);
+    void AND_ABSY(int &cycles);
+    void AND_INDX(int &cycles);
+    void AND_INDY(int &cycles);
+
+    void ASL_ACC(int &cycles);
+    void ASL_ZERO(int &cycles);
+    void ASL_ZEROX(int &cycles);
+    void ASL_ABS(int &cycles);
+    void ASL_ABSX(int &cycles);
   
     void LDA_IM(int &cycles);
     void LDA_ZERO(int &cycles);
@@ -95,7 +112,23 @@ static opcode operations[] = {
         {"ADC_ZERO", 0x65, &MOS6502::ADC_ZERO},
         {"ADC_ZEROX", 0x75, &MOS6502::ADC_ZEROX},
         {"ADC_ABS", 0x6D, &MOS6502::ADC_ABS},
+        {"ADC_ABSX", 0x7D, &MOS6502::ADC_ABSX},
+        {"ADC_ABSY", 0x79, &MOS6502::ADC_ABSY},
+        {"ADC_INDX", 0x61, &MOS6502::ADC_INDX},
+        {"ADC_INDY", 0x71, &MOS6502::ADC_INDY},
         {"AND_IM", 0x29, &MOS6502::AND_IM},
+        {"AND_ZERO", 0x25, &MOS6502::AND_ZERO},
+        {"AND_ZEROX", 0x35, &MOS6502::AND_ZEROX},
+        {"AND_ABS", 0x2D, &MOS6502::AND_ABS},
+        {"AND_ABSX", 0x3D, &MOS6502::AND_ABSX},
+        {"AND_ABSY", 0x39, &MOS6502::AND_ABSY},
+        {"AND_INDX", 0x21, &MOS6502::AND_INDX},
+        {"AND_INDY", 0x31, &MOS6502::AND_INDY},
+        {"ASL_ACC", 0x0A, &MOS6502::ASL_ACC},
+        {"ASL_ZERO", 0x06, &MOS6502::ASL_ZERO},
+        {"ASL_ZEROX", 0x16, &MOS6502::ASL_ZEROX},
+        {"ASL_ABS", 0x0E, &MOS6502::ASL_ABS},
+        {"ASL_ABSX", 0x1E, &MOS6502::ASL_ABSX},
         {"LDA_IM", 0xA9, &MOS6502::LDA_IM},
         {"LDA_ZERO", 0xA5, &MOS6502::LDA_ZERO},
         {"LDA_ZEROX", 0xB5, &MOS6502::LDA_ZEROX},

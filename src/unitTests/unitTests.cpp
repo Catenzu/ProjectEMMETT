@@ -18,5 +18,6 @@ int unitTests()
     std::cout << "------------------------------" << std::endl;
     test_ADC(cpu);
     test_AND(cpu);
+    test_ASL(cpu);
     return 1;
 }
