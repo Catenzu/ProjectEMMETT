@@ -109,6 +109,11 @@ public:
     void PHP(int &cycles);
     void PLA(int &cycles);
     void PLP(int &cycles);
+
+    void JMP_ABS(int &cycles);
+    void JMP_IND(int &cycles);
+    void JSR_ABS(int &cycles);
+    void RTS(int &cycles);
 };
 
 
@@ -166,4 +171,8 @@ static opcode operations[] = {
         {"PHP", 0x08, &MOS6502::PHP},
         {"PLA", 0x68, &MOS6502::PLA},
         {"PLP", 0x28, &MOS6502::PLP},
+        {"JMP_ABS", 0x4C, &MOS6502::JMP_ABS},
+        {"JMP_IND", 0x6C, &MOS6502::JMP_IND},
+        {"JSR_ABS", 0x20, &MOS6502::JSR_ABS},
+        {"RTS", 0x60, &MOS6502::RTS},
 };
