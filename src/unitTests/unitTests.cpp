@@ -16,6 +16,12 @@ int unitTests()
     std::cout << "------------------------------" << std::endl;
     test_LDY(cpu);
     std::cout << "------------------------------" << std::endl;
+    test_ADC(cpu);
+    std::cout << "------------------------------" << std::endl;
+    test_AND(cpu);
+    std::cout << "------------------------------" << std::endl;
+    test_ASL(cpu);
+    std::cout << "------------------------------" << std::endl;
     test_STA(cpu);
     std::cout << "------------------------------" << std::endl;
     test_STX(cpu);
@@ -28,8 +34,5 @@ int unitTests()
     std::cout << "------------------------------" << std::endl;
     test_JMP(cpu);
     std::cout << "------------------------------" << std::endl;
-    //test_ADC(cpu);
-    //std::cout << "------------------------------" << std::endl;
-    //test_AND(cpu);
     return 1;
 }

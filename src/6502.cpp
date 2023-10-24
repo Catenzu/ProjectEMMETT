@@ -91,6 +91,19 @@ void MOS6502::setNegativeFlag(unsigned char value)
         _sr._value = _sr._value | 0b10000000; //set the 7th bit to 1
 }
 
+void MOS6502::setMemory(uint16_t address, unsigned char value)
+{
+    if (address > 0xFFFF || address < 0x0000) {
+        std::cerr << "SetMemory: Invalid address at " << address << std::endl;
+        return;
+    }
+    if (value > 0xFF || value < 0x00) {
+        std::cerr << "SetMemory: Invalid value: " << value << std::endl;
+        return;
+    }
+    _memory[address].set(value);
+}
+
 unsigned char MOS6502::getMemory(uint16_t address, int &cycles)
 {
     if (address > 0xFFFF || address < 0x0000) {
