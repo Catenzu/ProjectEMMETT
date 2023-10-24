@@ -91,6 +91,14 @@ void MOS6502::setNegativeFlag(unsigned char value)
         _sr._value = _sr._value | 0b10000000; //set the 7th bit to 1
 }
 
+void MOS6502::setCarryFlag(bool value)
+{
+    if (value)
+        _sr._value = _sr._value | 0b00000001; //set the 0th bit to 1
+    else
+        _sr._value = _sr._value & 0b11111110; //set the 0th bit to 0
+}
+
 void MOS6502::setMemory(uint16_t address, unsigned char value)
 {
     if (address > 0xFFFF || address < 0x0000) {

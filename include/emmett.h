@@ -52,6 +52,7 @@ public:
     /*Status Register*/
     void setZeroFlag(unsigned char value);
     void setNegativeFlag(unsigned char value);
+    void setCarryFlag(bool value);
 
     /*Get Bytes Adressing Modes*/
     unsigned char getValueImmediate(int &cycles);
@@ -142,6 +143,18 @@ public:
     void JMP_IND(int &cycles);
     void JSR_ABS(int &cycles);
     void RTS(int &cycles);
+
+    void ROL_ACC(int &cycles);
+    void ROL_ZERO(int &cycles);
+    void ROL_ZEROX(int &cycles);
+    void ROL_ABS(int &cycles);
+    void ROL_ABSX(int &cycles);
+
+    void ROR_ACC(int &cycles);
+    void ROR_ZERO(int &cycles);
+    void ROR_ZEROX(int &cycles);
+    void ROR_ABS(int &cycles);
+    void ROR_ABSX(int &cycles);
 };
 
 
@@ -219,4 +232,14 @@ static opcode operations[] = {
         {"JMP_IND", 0x6C, &MOS6502::JMP_IND},
         {"JSR_ABS", 0x20, &MOS6502::JSR_ABS},
         {"RTS", 0x60, &MOS6502::RTS},
+        {"ROL_ACC", 0x2A, &MOS6502::ROL_ACC},
+        {"ROL_ZERO", 0x26, &MOS6502::ROL_ZERO},
+        {"ROL_ZEROX", 0x36, &MOS6502::ROL_ZEROX},
+        {"ROL_ABS", 0x2E, &MOS6502::ROL_ABS},
+        {"ROL_ABSX", 0x3E, &MOS6502::ROL_ABSX},
+        {"ROR_ACC", 0x6A, &MOS6502::ROR_ACC},
+        {"ROR_ZERO", 0x66, &MOS6502::ROR_ZERO},
+        {"ROR_ZEROX", 0x76, &MOS6502::ROR_ZEROX},
+        {"ROR_ABS", 0x6E, &MOS6502::ROR_ABS},
+        {"ROR_ABSX", 0x7E, &MOS6502::ROR_ABSX},
 };
