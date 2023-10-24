@@ -53,6 +53,17 @@ public:
     void setZeroFlag(unsigned char value);
     void setNegativeFlag(unsigned char value);
 
+    /*Get Bytes Adressing Modes*/
+    unsigned char getValueImmediate(int &cycles);
+    unsigned char getValueZeroPage(int &cycles);
+    unsigned char getValueZeroPageX(int &cycles);
+    unsigned char getValueZeroPageY(int &cycles);
+    unsigned char getValueAbsolute(int &cycles);
+    unsigned char getValueAbsoluteX(int &cycles);
+    unsigned char getValueAbsoluteY(int &cycles);
+    unsigned char getValueIndirectX(int &cycles);
+    unsigned char getValueIndirectY(int &cycles);
+
     /*Opcode*/
     void ADC_IM(int &cycles);
     void ADC_ZERO(int &cycles);
