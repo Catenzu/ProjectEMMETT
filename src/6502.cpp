@@ -9,7 +9,7 @@ MOS6502::MOS6502()
     _a.set(0);
     _x.set(0);
     _y.set(0);
-    _sp.set(0);
+    _sp.set(0xFF);
     _sr.set(0);
     _pc = 0;
     _isInDebugMode = false;
@@ -21,7 +21,7 @@ void MOS6502::clear()
     _a.set(0);
     _x.set(0);
     _y.set(0);
-    _sp.set(0);
+    _sp.set(0xFF);
     _sr.set(0);
     _pc = 0;
     _aluAdditionCarry = false;
@@ -36,7 +36,7 @@ void MOS6502::reset()
     int pc2 = _memory[0xFFFD]._value;
 
     _pc = (pc2 << 8) | pc1;
-    _sp.set(0x00);
+    _sp.set(0xFF);
     _sr.set(0x00);
     _x.set(0x00);
     _y.set(0x00);
@@ -112,4 +112,14 @@ unsigned char MOS6502::getMemory(uint16_t address, int &cycles)
     }
     cycles--;
     return _memory[address]._value;
+}
+
+void MOS6502::setMemory(uint16_t address, unsigned char value, int &cycles)
+{
+    if (address > 0xFFFF || address < 0x0000) {
+        std::cerr << "SetMemory: Invalid address at " << address << std::endl;
+        return;
+    }
+    _memory[address].set(value);
+    cycles--;
 }

@@ -32,6 +32,7 @@ public:
     bool _aluAdditionCarry; //not the carry flag, but the carry of the addition
     unsigned char fetch(int &cycles);
     unsigned char getMemory(uint16_t address, int &cycles);
+    void setMemory(uint16_t address, unsigned char value, int &cycles);
 
     /*inDebug*/
     bool _isInDebugMode;
@@ -97,6 +98,39 @@ public:
     void LDY_ZEROX(int &cycles);
     void LDY_ABS(int &cycles);
     void LDY_ABSX(int &cycles);
+
+    void STA_ZERO(int &cycles);
+    void STA_ZEROX(int &cycles);
+    void STA_ABS(int &cycles);
+    void STA_ABSX(int &cycles);
+    void STA_ABSY(int &cycles);
+    void STA_INDX(int &cycles);
+    void STA_INDY(int &cycles);
+
+    void STX_ZERO(int &cycles);
+    void STX_ZEROY(int &cycles);
+    void STX_ABS(int &cycles);
+
+    void STY_ZERO(int &cycles);
+    void STY_ZEROX(int &cycles);
+    void STY_ABS(int &cycles);
+
+    void TAX(int &cycles);
+    void TAY(int &cycles);
+    void TXA(int &cycles);
+    void TYA(int &cycles);
+    void TSX(int &cycles);
+    void TXS(int &cycles);
+
+    void PHA(int &cycles);
+    void PHP(int &cycles);
+    void PLA(int &cycles);
+    void PLP(int &cycles);
+
+    void JMP_ABS(int &cycles);
+    void JMP_IND(int &cycles);
+    void JSR_ABS(int &cycles);
+    void RTS(int &cycles);
 };
 
 
@@ -147,4 +181,31 @@ static opcode operations[] = {
         {"LDY_ZEROX", 0xB4, &MOS6502::LDY_ZEROX},
         {"LDY_ABS", 0xAC, &MOS6502::LDY_ABS},
         {"LDY_ABSX", 0xBC, &MOS6502::LDY_ABSX},
+        {"STA_ZERO", 0x85, &MOS6502::STA_ZERO},
+        {"STA_ZEROX", 0x95, &MOS6502::STA_ZEROX},
+        {"STA_ABS", 0x8D, &MOS6502::STA_ABS},
+        {"STA_ABSX", 0x9D, &MOS6502::STA_ABSX},
+        {"STA_ABSY", 0x99, &MOS6502::STA_ABSY},
+        {"STA_INDX", 0x81, &MOS6502::STA_INDX},
+        {"STA_INDY", 0x91, &MOS6502::STA_INDY},
+        {"STX_ZERO", 0x86, &MOS6502::STX_ZERO},
+        {"STX_ZEROY", 0x96, &MOS6502::STX_ZEROY},
+        {"STX_ABS", 0x8E, &MOS6502::STX_ABS},
+        {"STY_ZERO", 0x84, &MOS6502::STY_ZERO},
+        {"STY_ZEROX", 0x94, &MOS6502::STY_ZEROX},
+        {"STY_ABS", 0x8C, &MOS6502::STY_ABS},
+        {"TAX", 0xAA, &MOS6502::TAX},
+        {"TAY", 0xA8, &MOS6502::TAY},
+        {"TXA", 0x8A, &MOS6502::TXA},
+        {"TYA", 0x98, &MOS6502::TYA},
+        {"TSX", 0xBA, &MOS6502::TSX},
+        {"TXS", 0x9A, &MOS6502::TXS},
+        {"PHA", 0x48, &MOS6502::PHA},
+        {"PHP", 0x08, &MOS6502::PHP},
+        {"PLA", 0x68, &MOS6502::PLA},
+        {"PLP", 0x28, &MOS6502::PLP},
+        {"JMP_ABS", 0x4C, &MOS6502::JMP_ABS},
+        {"JMP_IND", 0x6C, &MOS6502::JMP_IND},
+        {"JSR_ABS", 0x20, &MOS6502::JSR_ABS},
+        {"RTS", 0x60, &MOS6502::RTS},
 };
