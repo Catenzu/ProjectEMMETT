@@ -20,10 +20,9 @@ void MOS6502::ROL_ACC(int &cycles)
     else
         _sr._value &= 0b11111110;
 
-    std::cout << "ROL_ACC: " << (int) value << std::endl;
-    std::cout << "ROL_ACC: " << (int) result << std::endl;
-
     _a.set(result);
+    setNegativeFlag(result);
+    setZeroFlag(result);
     std::cout << "--ROL Accumulator: " << (int) _a._value << std::endl;
 }
 
