@@ -93,7 +93,7 @@ void MOS6502::setNegativeFlag(unsigned char value)
 
 void MOS6502::setMemory(uint16_t address, unsigned char value)
 {
-    if (address > 0xFFFF || address < 0xFFFF) {
+    if (address > 0xFFFF || address < 0x0000) {
         std::cerr << "SetMemory: Invalid address at " << address << std::endl;
         return;
     }
