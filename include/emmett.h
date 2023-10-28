@@ -65,6 +65,15 @@ public:
     unsigned char getValueIndirectX(int &cycles);
     unsigned char getValueIndirectY(int &cycles);
 
+    uint16_t getAdressZeroPage(int &cycles);
+    uint16_t getAdressZeroPageX(int &cycles);
+    uint16_t getAdressZeroPageY(int &cycles);
+    uint16_t getAdressAbsolute(int &cycles);
+    uint16_t getAdressAbsoluteX(int &cycles);
+    uint16_t getAdressAbsoluteY(int &cycles);
+    uint16_t getAdressIndirectX(int &cycles);
+    uint16_t getAdressIndirectY(int &cycles);
+
     /*Opcode*/
     void ADC_IM(int &cycles);
     void ADC_ZERO(int &cycles);
