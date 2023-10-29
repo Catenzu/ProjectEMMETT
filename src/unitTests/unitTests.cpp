@@ -38,5 +38,7 @@ int unitTests()
     std::cout << "------------------------------" << std::endl;
     test_ROR(cpu);
     std::cout << "------------------------------" << std::endl;
+    test_BRANCH(cpu);
+    std::cout << "------------------------------" << std::endl;
     return 1;
 }
