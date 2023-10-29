@@ -34,5 +34,9 @@ int unitTests()
     std::cout << "------------------------------" << std::endl;
     test_JMP(cpu);
     std::cout << "------------------------------" << std::endl;
+    test_ROL(cpu);
+    std::cout << "------------------------------" << std::endl;
+    test_ROR(cpu);
+    std::cout << "------------------------------" << std::endl;
     return 1;
 }
