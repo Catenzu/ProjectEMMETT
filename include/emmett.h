@@ -98,6 +98,15 @@ public:
     void ASL_ZEROX(int &cycles);
     void ASL_ABS(int &cycles);
     void ASL_ABSX(int &cycles);
+
+    void BCC(int &cycles);
+    void BCS(int &cycles);
+    void BEQ(int &cycles);
+    void BMI(int &cycles);
+    void BNE(int &cycles);
+    void BPL(int &cycles);
+    void BVC(int &cycles);
+    void BVS(int &cycles);
   
     void LDA_IM(int &cycles);
     void LDA_ZERO(int &cycles);
@@ -196,6 +205,14 @@ static opcode operations[] = {
         {"ASL_ZEROX", 0x16, &MOS6502::ASL_ZEROX},
         {"ASL_ABS", 0x0E, &MOS6502::ASL_ABS},
         {"ASL_ABSX", 0x1E, &MOS6502::ASL_ABSX},
+        {"BCC", 0x90, &MOS6502::BCC},
+        {"BCS", 0xB0, &MOS6502::BCS},
+        {"BEQ", 0xF0, &MOS6502::BEQ},
+        {"BMI", 0x30, &MOS6502::BMI},
+        {"BNE", 0xD0, &MOS6502::BNE},
+        {"BPL", 0x10, &MOS6502::BPL},
+        {"BVC", 0x50, &MOS6502::BVC},
+        {"BVS", 0x70, &MOS6502::BVS},
         {"LDA_IM", 0xA9, &MOS6502::LDA_IM},
         {"LDA_ZERO", 0xA5, &MOS6502::LDA_ZERO},
         {"LDA_ZEROX", 0xB5, &MOS6502::LDA_ZEROX},
