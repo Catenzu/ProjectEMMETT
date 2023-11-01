@@ -79,16 +79,36 @@ unsigned char MOS6502::aluAddition(unsigned char componentA, unsigned char compo
     return result8;
 }
 
-void MOS6502::setZeroFlag(unsigned char value)
+void MOS6502::setZeroFlagFromByte(unsigned char value)
 {
     if (value == 0)
         _sr._value = _sr._value | 0b00000010; //set the 1th bit to 1
+    else
+        _sr._value = _sr._value & 0b11111101; //set the 1th bit to 0
 }
 
-void MOS6502::setNegativeFlag(unsigned char value)
+void MOS6502::setNegativeFlagFromByte(unsigned char value)
 {
     if (value & 0b10000000) //if the 7th bit is 1
         _sr._value = _sr._value | 0b10000000; //set the 7th bit to 1
+    else
+        _sr._value = _sr._value & 0b01111111; //set the 7th bit to 0
+}
+
+void MOS6502::setZeroFlag(bool value)
+{
+    if (value)
+        _sr._value = _sr._value | 0b00000010; //set the 0th bit to 1
+    else
+        _sr._value = _sr._value & 0b11111101; //set the 0th bit to 0
+}
+
+void MOS6502::setNegativeFlag(bool value)
+{
+    if (value)
+        _sr._value = _sr._value | 0b10000000; //set the 6th bit to 1
+    else
+        _sr._value = _sr._value & 0b01111111; //set the 6th bit to 0
 }
 
 void MOS6502::setCarryFlag(bool value)
@@ -97,6 +117,14 @@ void MOS6502::setCarryFlag(bool value)
         _sr._value = _sr._value | 0b00000001; //set the 0th bit to 1
     else
         _sr._value = _sr._value & 0b11111110; //set the 0th bit to 0
+}
+
+void MOS6502::setOverflowFlag(bool value)
+{
+    if (value)
+        _sr._value = _sr._value | 0b01000000; //set the 6th bit to 1
+    else
+        _sr._value = _sr._value & 0b10111111; //set the 6th bit to 0
 }
 
 void MOS6502::setMemory(uint16_t address, unsigned char value)

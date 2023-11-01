@@ -40,5 +40,9 @@ int unitTests()
     std::cout << "------------------------------" << std::endl;
     test_BRANCH(cpu);
     std::cout << "------------------------------" << std::endl;
+    test_CMP(cpu);
+    std::cout << "------------------------------" << std::endl;
+    test_SBC(cpu);
+    std::cout << "------------------------------" << std::endl;
     return 1;
 }

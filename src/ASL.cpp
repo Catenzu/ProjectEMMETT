@@ -12,8 +12,8 @@ void MOS6502::ASL_ACC(int &cycles)
     unsigned char result = _a._value << 1;
 
     cycles--;
-    setNegativeFlag(result);
-    setZeroFlag(result);
+    setNegativeFlagFromByte(result);
+    setZeroFlagFromByte(result);
     _a.set(result);
     std::cout << "ASL ACC: " << (int) _a._value << std::endl;
 }
@@ -25,8 +25,8 @@ void MOS6502::ASL_ZERO(int &cycles)
     bool carry = (value & 0x80) != 0;
 
     value <<= 1;
-    setZeroFlag(value);
-    setNegativeFlag(value);
+    setZeroFlagFromByte(value);
+    setNegativeFlagFromByte(value);
     if (carry) {
         _sr._value |= 0b00000001;
     } else {

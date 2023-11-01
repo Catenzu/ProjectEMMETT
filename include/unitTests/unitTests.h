@@ -26,3 +26,5 @@ int test_BRANCH(MOS6502 &cpu);
 int test_JMP(MOS6502 &cpu);
 int test_ROL(MOS6502 &cpu);
 int test_ROR(MOS6502 &cpu);
+int test_CMP(MOS6502 &cpu);
+int test_SBC(MOS6502 &cpu);

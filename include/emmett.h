@@ -50,9 +50,12 @@ public:
     Register _memory[65536];
 
     /*Status Register*/
-    void setZeroFlag(unsigned char value);
-    void setNegativeFlag(unsigned char value);
+    void setZeroFlagFromByte(unsigned char value);
+    void setNegativeFlagFromByte(unsigned char value);
+    void setZeroFlag(bool value);
+    void setNegativeFlag(bool value);
     void setCarryFlag(bool value);
+    void setOverflowFlag(bool value);
 
     /*Get Bytes Adressing Modes*/
     unsigned char getValueImmediate(int &cycles);
@@ -107,7 +110,16 @@ public:
     void BPL(int &cycles);
     void BVC(int &cycles);
     void BVS(int &cycles);
-  
+
+    void CMP_IM(int &cycles);
+    void CMP_ZERO(int &cycles);
+    void CMP_ZEROX(int &cycles);
+    void CMP_ABS(int &cycles);
+    void CMP_ABSX(int &cycles);
+    void CMP_ABSY(int &cycles);
+    void CMP_INDX(int &cycles);
+    void CMP_INDY(int &cycles);
+
     void LDA_IM(int &cycles);
     void LDA_ZERO(int &cycles);
     void LDA_ZEROX(int &cycles);
@@ -173,6 +185,8 @@ public:
     void ROR_ZEROX(int &cycles);
     void ROR_ABS(int &cycles);
     void ROR_ABSX(int &cycles);
+
+    void SBC_IM(int &cycles);
 };
 
 
@@ -213,6 +227,14 @@ static opcode operations[] = {
         {"BPL", 0x10, &MOS6502::BPL},
         {"BVC", 0x50, &MOS6502::BVC},
         {"BVS", 0x70, &MOS6502::BVS},
+        {"CMP_IM", 0xC9, &MOS6502::CMP_IM},
+        {"CMP_ZERO", 0xC5, &MOS6502::CMP_ZERO},
+        {"CMP_ZEROX", 0xD5, &MOS6502::CMP_ZEROX},
+        {"CMP_ABS", 0xCD, &MOS6502::CMP_ABS},
+        {"CMP_ABSX", 0xDD, &MOS6502::CMP_ABSX},
+        {"CMP_ABSY", 0xD9, &MOS6502::CMP_ABSY},
+        {"CMP_INDX", 0xC1, &MOS6502::CMP_INDX},
+        {"CMP_INDY", 0xD1, &MOS6502::CMP_INDY},
         {"LDA_IM", 0xA9, &MOS6502::LDA_IM},
         {"LDA_ZERO", 0xA5, &MOS6502::LDA_ZERO},
         {"LDA_ZEROX", 0xB5, &MOS6502::LDA_ZEROX},
@@ -268,4 +290,5 @@ static opcode operations[] = {
         {"ROR_ZEROX", 0x76, &MOS6502::ROR_ZEROX},
         {"ROR_ABS", 0x6E, &MOS6502::ROR_ABS},
         {"ROR_ABSX", 0x7E, &MOS6502::ROR_ABSX},
+        {"SBC_IM", 0xE9, &MOS6502::SBC_IM}
 };
