@@ -120,6 +120,14 @@ public:
     void CMP_INDX(int &cycles);
     void CMP_INDY(int &cycles);
 
+    void CPX_IM(int &cycles);
+    void CPX_ZERO(int &cycles);
+    void CPX_ABS(int &cycles);
+
+    void CPY_IM(int &cycles);
+    void CPY_ZERO(int &cycles);
+    void CPY_ABS(int &cycles);
+
     void LDA_IM(int &cycles);
     void LDA_ZERO(int &cycles);
     void LDA_ZEROX(int &cycles);
@@ -242,6 +250,12 @@ static opcode operations[] = {
         {"CMP_ABSY", 0xD9, &MOS6502::CMP_ABSY},
         {"CMP_INDX", 0xC1, &MOS6502::CMP_INDX},
         {"CMP_INDY", 0xD1, &MOS6502::CMP_INDY},
+        {"CPX_IM", 0xE0, &MOS6502::CPX_IM},
+        {"CPX_ZERO", 0xE4, &MOS6502::CPX_ZERO},
+        {"CPX_ABS", 0xEC, &MOS6502::CPX_ABS},
+        {"CPY_IM", 0xC0, &MOS6502::CPY_IM},
+        {"CPY_ZERO", 0xC4, &MOS6502::CPY_ZERO},
+        {"CPY_ABS", 0xCC, &MOS6502::CPY_ABS},
         {"LDA_IM", 0xA9, &MOS6502::LDA_IM},
         {"LDA_ZERO", 0xA5, &MOS6502::LDA_ZERO},
         {"LDA_ZEROX", 0xB5, &MOS6502::LDA_ZEROX},

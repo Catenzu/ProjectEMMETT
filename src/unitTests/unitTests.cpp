@@ -42,6 +42,10 @@ int unitTests()
     std::cout << "------------------------------" << std::endl;
     test_CMP(cpu);
     std::cout << "------------------------------" << std::endl;
+    test_CPX(cpu);
+    std::cout << "------------------------------" << std::endl;
+    test_CPY(cpu);
+    std::cout << "------------------------------" << std::endl;
     test_SBC(cpu);
     std::cout << "------------------------------" << std::endl;
     return 1;
