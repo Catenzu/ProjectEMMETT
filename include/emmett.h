@@ -187,6 +187,13 @@ public:
     void ROR_ABSX(int &cycles);
 
     void SBC_IM(int &cycles);
+    void SBC_ZERO(int &cycles);
+    void SBC_ZEROX(int &cycles);
+    void SBC_ABS(int &cycles);
+    void SBC_ABSX(int &cycles);
+    void SBC_ABSY(int &cycles);
+    void SBC_INDX(int &cycles);
+    void SBC_INDY(int &cycles);
 };
 
 
@@ -290,5 +297,12 @@ static opcode operations[] = {
         {"ROR_ZEROX", 0x76, &MOS6502::ROR_ZEROX},
         {"ROR_ABS", 0x6E, &MOS6502::ROR_ABS},
         {"ROR_ABSX", 0x7E, &MOS6502::ROR_ABSX},
-        {"SBC_IM", 0xE9, &MOS6502::SBC_IM}
+        {"SBC_IM", 0xE9, &MOS6502::SBC_IM},
+        {"SBC_ZERO", 0xE5, &MOS6502::SBC_ZERO},
+        {"SBC_ZEROX", 0xF5, &MOS6502::SBC_ZEROX},
+        {"SBC_ABS", 0xED, &MOS6502::SBC_ABS},
+        {"SBC_ABSX", 0xFD, &MOS6502::SBC_ABSX},
+        {"SBC_ABSY", 0xF9, &MOS6502::SBC_ABSY},
+        {"SBC_INDX", 0xE1, &MOS6502::SBC_INDX},
+        {"SBC_INDY", 0xF1, &MOS6502::SBC_INDY},
 };

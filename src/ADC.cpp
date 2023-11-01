@@ -14,13 +14,28 @@ void MOS6502::ADC_IM(int &cycles)
     uint16_t result = _a._value + value + carry; //addition of the two values and the carry
     unsigned char result8 = _a._value + value + carry; //addition of the two values and the carry
 
-    setNegativeFlagFromByte(result8);
     setZeroFlagFromByte(result8);
-    setCarryFlag(result > 0xFF);
-    setOverflowFlag(((_a._value ^ value) & 0x80) && ((_a._value ^ result8) & 0x80));
 
     //if decimal
-
+    if (_sr._value & 0b00001000)
+    {
+        if (((_a._value & 0xF) + (value & 0xF) + _sr._value & 0b00000001) > 9)
+            result += 6; //remove A-F
+        setNegativeFlag(result & 0x80);
+        setOverflowFlag(!((_a._value ^ value) & 0x80) && ((_a._value ^ value) & 0x80));
+        if (result > 0x99) {
+            setCarryFlag(true);
+            result += 96;
+        } else
+            setCarryFlag(false);
+        result8 = result & 0xFF;
+    }
+    else
+    {
+        setNegativeFlagFromByte(result8);
+        setCarryFlag(result > 0xFF);
+        setOverflowFlag(((_a._value ^ value) & 0x80) && ((_a._value ^ result8) & 0x80));
+    }
 
     _a.set(result8);
     std::cout << "--ADC IM: " << (int) _a._value << std::endl;
@@ -33,10 +48,29 @@ void MOS6502::ADC_ZERO(int &cycles)
     uint16_t result = _a._value + value + carry; //addition of the two values and the carry
     unsigned char result8 = _a._value + value + carry; //addition of the two values and the carry
 
-    setNegativeFlagFromByte(result8);
     setZeroFlagFromByte(result8);
-    setCarryFlag(result > 0xFF);
-    setOverflowFlag(((_a._value ^ value) & 0x80) && ((_a._value ^ result8) & 0x80));
+
+    //if decimal
+    if (_sr._value & 0b00001000)
+    {
+        if (((_a._value & 0xF) + (value & 0xF) + _sr._value & 0b00000001) > 9)
+            result += 6; //remove A-F
+        setNegativeFlag(result & 0x80);
+        setOverflowFlag(!((_a._value ^ value) & 0x80) && ((_a._value ^ value) & 0x80));
+        if (result > 0x99) {
+            setCarryFlag(true);
+            result += 96;
+        } else
+            setCarryFlag(false);
+        result8 = result & 0xFF;
+    }
+    else
+    {
+        setNegativeFlagFromByte(result8);
+        setCarryFlag(result > 0xFF);
+        setOverflowFlag(((_a._value ^ value) & 0x80) && ((_a._value ^ result8) & 0x80));
+    }
+
     _a.set(result8);
     std::cout << "--ADC ZERO: " << (int) _a._value << std::endl;
 }
@@ -48,10 +82,29 @@ void MOS6502::ADC_ZEROX(int &cycles)
     unsigned char result = _a._value + value + carry; //addition of the two values and the carry
     unsigned char result8 = _a._value + value + carry; //addition of the two values and the carrcycles--;
 
-    setNegativeFlagFromByte(value);
-    setZeroFlagFromByte(value);
-    setCarryFlag(result > 0xFF);
-    setOverflowFlag(((_a._value ^ value) & 0x80) && ((_a._value ^ result8) & 0x80));
+    setZeroFlagFromByte(result8);
+
+    //if decimal
+    if (_sr._value & 0b00001000)
+    {
+        if (((_a._value & 0xF) + (value & 0xF) + _sr._value & 0b00000001) > 9)
+            result += 6; //remove A-F
+        setNegativeFlag(result & 0x80);
+        setOverflowFlag(!((_a._value ^ value) & 0x80) && ((_a._value ^ value) & 0x80));
+        if (result > 0x99) {
+            setCarryFlag(true);
+            result += 96;
+        } else
+            setCarryFlag(false);
+        result8 = result & 0xFF;
+    }
+    else
+    {
+        setNegativeFlagFromByte(result8);
+        setCarryFlag(result > 0xFF);
+        setOverflowFlag(((_a._value ^ value) & 0x80) && ((_a._value ^ result8) & 0x80));
+    }
+
     _a.set(result8);
     std::cout << "--ADC ZEROX: " << (int) _a._value << std::endl;
 }
@@ -63,10 +116,29 @@ void MOS6502::ADC_ABS(int &cycles) //ne fonctionne pas correctement je sais pas 
     unsigned char result = _a._value + value + carry; //addition of the two values and the carry
     unsigned char result8 = _a._value + value + carry; //addition of the two values and the carry
 
-    setNegativeFlagFromByte(value);
-    setZeroFlagFromByte(value);
-    setCarryFlag(result > 0xFF);
-    setOverflowFlag(((_a._value ^ value) & 0x80) && ((_a._value ^ result8) & 0x80));
+    setZeroFlagFromByte(result8);
+
+    //if decimal
+    if (_sr._value & 0b00001000)
+    {
+        if (((_a._value & 0xF) + (value & 0xF) + _sr._value & 0b00000001) > 9)
+            result += 6; //remove A-F
+        setNegativeFlag(result & 0x80);
+        setOverflowFlag(!((_a._value ^ value) & 0x80) && ((_a._value ^ value) & 0x80));
+        if (result > 0x99) {
+            setCarryFlag(true);
+            result += 96;
+        } else
+            setCarryFlag(false);
+        result8 = result & 0xFF;
+    }
+    else
+    {
+        setNegativeFlagFromByte(result8);
+        setCarryFlag(result > 0xFF);
+        setOverflowFlag(((_a._value ^ value) & 0x80) && ((_a._value ^ result8) & 0x80));
+    }
+
     _a.set(result8);
     std::cout << "--ADC ABS: " << (int) _a._value << std::endl;
 }
@@ -78,10 +150,29 @@ void MOS6502::ADC_ABSX(int &cycles)
     unsigned char result = _a._value + value + carry; //addition of the two values and the carry
     unsigned char result8 = _a._value + value + carry; //addition of the two values and the carry
 
-    setNegativeFlagFromByte(value);
-    setZeroFlagFromByte(value);
-    setCarryFlag(result > 0xFF);
-    setOverflowFlag(((_a._value ^ value) & 0x80) && ((_a._value ^ result8) & 0x80));
+    setZeroFlagFromByte(result8);
+
+    //if decimal
+    if (_sr._value & 0b00001000)
+    {
+        if (((_a._value & 0xF) + (value & 0xF) + _sr._value & 0b00000001) > 9)
+            result += 6; //remove A-F
+        setNegativeFlag(result & 0x80);
+        setOverflowFlag(!((_a._value ^ value) & 0x80) && ((_a._value ^ value) & 0x80));
+        if (result > 0x99) {
+            setCarryFlag(true);
+            result += 96;
+        } else
+            setCarryFlag(false);
+        result8 = result & 0xFF;
+    }
+    else
+    {
+        setNegativeFlagFromByte(result8);
+        setCarryFlag(result > 0xFF);
+        setOverflowFlag(((_a._value ^ value) & 0x80) && ((_a._value ^ result8) & 0x80));
+    }
+
     _a.set(result8);
     std::cout << "--ADC ABSX: " << (int) _a._value << std::endl;
 }
@@ -93,10 +184,29 @@ void MOS6502::ADC_ABSY(int &cycles)
     unsigned char result = _a._value + value + carry; //addition of the two values and the carry
     unsigned char result8 = _a._value + value + carry; //addition of the two values and the carry
 
-    setNegativeFlagFromByte(value);
-    setZeroFlagFromByte(value);
-    setCarryFlag(result > 0xFF);
-    setOverflowFlag(((_a._value ^ value) & 0x80) && ((_a._value ^ result8) & 0x80));
+    setZeroFlagFromByte(result8);
+
+    //if decimal
+    if (_sr._value & 0b00001000)
+    {
+        if (((_a._value & 0xF) + (value & 0xF) + _sr._value & 0b00000001) > 9)
+            result += 6; //remove A-F
+        setNegativeFlag(result & 0x80);
+        setOverflowFlag(!((_a._value ^ value) & 0x80) && ((_a._value ^ value) & 0x80));
+        if (result > 0x99) {
+            setCarryFlag(true);
+            result += 96;
+        } else
+            setCarryFlag(false);
+        result8 = result & 0xFF;
+    }
+    else
+    {
+        setNegativeFlagFromByte(result8);
+        setCarryFlag(result > 0xFF);
+        setOverflowFlag(((_a._value ^ value) & 0x80) && ((_a._value ^ result8) & 0x80));
+    }
+
     _a.set(result8);
     std::cout << "--ADC ABSY: " << (int) _a._value << std::endl;
 }
@@ -109,10 +219,29 @@ void MOS6502::ADC_INDX(int &cycles)
     unsigned char result = _a._value + value + carry; //addition of the two values and the carry
     unsigned char result8 = _a._value + value + carry; //addition of the two values and the carry
 
-    setNegativeFlagFromByte(value);
-    setZeroFlagFromByte(value);
-    setCarryFlag(result > 0xFF);
-    setOverflowFlag(((_a._value ^ value) & 0x80) && ((_a._value ^ result8) & 0x80));
+    setZeroFlagFromByte(result8);
+
+    //if decimal
+    if (_sr._value & 0b00001000)
+    {
+        if (((_a._value & 0xF) + (value & 0xF) + _sr._value & 0b00000001) > 9)
+            result += 6; //remove A-F
+        setNegativeFlag(result & 0x80);
+        setOverflowFlag(!((_a._value ^ value) & 0x80) && ((_a._value ^ value) & 0x80));
+        if (result > 0x99) {
+            setCarryFlag(true);
+            result += 96;
+        } else
+            setCarryFlag(false);
+        result8 = result & 0xFF;
+    }
+    else
+    {
+        setNegativeFlagFromByte(result8);
+        setCarryFlag(result > 0xFF);
+        setOverflowFlag(((_a._value ^ value) & 0x80) && ((_a._value ^ result8) & 0x80));
+    }
+
     _a.set(result8);
     std::cout << "--ADC INDX: " << (int) _a._value << std::endl;
 }
@@ -125,17 +254,29 @@ void MOS6502::ADC_INDY(int &cycles)
     unsigned char result = _a._value + value + carry; //addition of the two values and the carry
     unsigned char result8 = _a._value + value + carry; //addition of the two values and the carry
 
-    setNegativeFlagFromByte(value);
-    setZeroFlagFromByte(value);
-    if (result > 0xFF) //if the result is bigger than 255
-        _sr._value = _sr._value | 0b00000001; //set the 0th bit to 1
+    setZeroFlagFromByte(result8);
+
+    //if decimal
+    if (_sr._value & 0b00001000)
+    {
+        if (((_a._value & 0xF) + (value & 0xF) + _sr._value & 0b00000001) > 9)
+            result += 6; //remove A-F
+        setNegativeFlag(result & 0x80);
+        setOverflowFlag(!((_a._value ^ value) & 0x80) && ((_a._value ^ value) & 0x80));
+        if (result > 0x99) {
+            setCarryFlag(true);
+            result += 96;
+        } else
+            setCarryFlag(false);
+        result8 = result & 0xFF;
+    }
     else
-        _sr._value = _sr._value & 0b11111110;
-    //overflow check
-    if ((_a._value ^ value) & 0x80 && (_a._value ^ result & 0x80)) //if the sign of the two values is different and the sign of the two values and the result is different
-        _sr._value = _sr._value | 0b01000000; //set the 6th bit to 1
-    else
-        _sr._value = _sr._value & 0b10111111;
+    {
+        setNegativeFlagFromByte(result8);
+        setCarryFlag(result > 0xFF);
+        setOverflowFlag(((_a._value ^ value) & 0x80) && ((_a._value ^ result8) & 0x80));
+    }
+
     _a.set(result8);
     std::cout << "--ADC INDY: " << (int) _a._value << std::endl;
 }

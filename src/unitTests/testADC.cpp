@@ -20,7 +20,7 @@ int test_ADC(MOS6502 &cpu)
     cpu.reset();
 
     if (cpu.execute(2) != 0)
-        std::cerr << "FAILURE: ADC Immediate cycles Used: " << cpu.execute(2) << " != 0" << std::endl;
+        std::cerr << "FAILURE: ADC Immediate cycles Used: " << cyclesUsed << " != 0" << std::endl;
     if (cpu._a._value != 0x0A) {
         std::cerr << "FAILURE: ADC Immediate: " << (int) cpu._a._value << " != 0x0A" << std::endl;
     } else
