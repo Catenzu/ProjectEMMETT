@@ -202,6 +202,14 @@ public:
     void SBC_ABSY(int &cycles);
     void SBC_INDX(int &cycles);
     void SBC_INDY(int &cycles);
+
+    void CLC(int &cycles);
+    void SEC(int &cycles);
+    void CLI(int &cycles);
+    void SEI(int &cycles);
+    void CLV(int &cycles);
+    void CLD(int &cycles);
+    void SED(int &cycles);
 };
 
 
@@ -319,4 +327,11 @@ static opcode operations[] = {
         {"SBC_ABSY", 0xF9, &MOS6502::SBC_ABSY},
         {"SBC_INDX", 0xE1, &MOS6502::SBC_INDX},
         {"SBC_INDY", 0xF1, &MOS6502::SBC_INDY},
+        {"CLC", 0x18, &MOS6502::CLC},
+        {"SEC", 0x38, &MOS6502::SEC},
+        {"CLI", 0x58, &MOS6502::CLI},
+        {"SEI", 0x78, &MOS6502::SEI},
+        {"CLV", 0xB8, &MOS6502::CLV},
+        {"CLD", 0xD8, &MOS6502::CLD},
+        {"SED", 0xF8, &MOS6502::SED},
 };

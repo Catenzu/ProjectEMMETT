@@ -30,3 +30,4 @@ int test_CMP(MOS6502 &cpu);
 int test_CPX(MOS6502 &cpu);
 int test_CPY(MOS6502 &cpu);
 int test_SBC(MOS6502 &cpu);
+int test_SET_CLEAR_FLAGS(MOS6502 &cpu);

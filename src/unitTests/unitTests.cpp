@@ -48,5 +48,7 @@ int unitTests()
     std::cout << "------------------------------" << std::endl;
     test_SBC(cpu);
     std::cout << "------------------------------" << std::endl;
+    test_SET_CLEAR_FLAGS(cpu);
+    std::cout << "------------------------------" << std::endl;
     return 1;
 }
