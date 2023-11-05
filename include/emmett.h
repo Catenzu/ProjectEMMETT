@@ -121,6 +121,12 @@ public:
     void ASL_ABS(int &cycles);
     void ASL_ABSX(int &cycles);
 
+    void LSR_ACC(int &cycles);
+    void LSR_ZERO(int &cycles);
+    void LSR_ZEROX(int &cycles);
+    void LSR_ABS(int &cycles);
+    void LSR_ABSX(int &cycles);
+
     void BCC(int &cycles);
     void BCS(int &cycles);
     void BEQ(int &cycles);
@@ -296,6 +302,11 @@ static opcode operations[] = {
         {"ASL_ZEROX", 0x16, &MOS6502::ASL_ZEROX},
         {"ASL_ABS", 0x0E, &MOS6502::ASL_ABS},
         {"ASL_ABSX", 0x1E, &MOS6502::ASL_ABSX},
+        {"LSR_ACC", 0x4A, &MOS6502::LSR_ACC},
+        {"LSR_ZERO", 0x46, &MOS6502::LSR_ZERO},
+        {"LSR_ZEROX", 0x56, &MOS6502::LSR_ZEROX},
+        {"LSR_ABS", 0x4E, &MOS6502::LSR_ABS},
+        {"LSR_ABSX", 0x5E, &MOS6502::LSR_ABSX},
         {"BIT_ZERO", 0x24, &MOS6502::BIT_ZERO},
         {"BIT_ABS", 0x2C, &MOS6502::BIT_ABS},
         {"BCC", 0x90, &MOS6502::BCC},

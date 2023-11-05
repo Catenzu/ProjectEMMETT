@@ -22,6 +22,8 @@ int unitTests()
     std::cout << "------------------------------" << std::endl;
     test_ASL(cpu);
     std::cout << "------------------------------" << std::endl;
+    test_LSR(cpu);
+    std::cout << "------------------------------" << std::endl;
     test_STA(cpu);
     std::cout << "------------------------------" << std::endl;
     test_STX(cpu);
