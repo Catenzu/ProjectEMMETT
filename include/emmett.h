@@ -241,6 +241,13 @@ public:
     void DEC_ABSX(int &cycles);
     void DEX(int &cycles);
     void DEY(int &cycles);
+
+    void INC_ZERO(int &cycles);
+    void INC_ZEROX(int &cycles);
+    void INC_ABS(int &cycles);
+    void INC_ABSX(int &cycles);
+    void INX(int &cycles);
+    void INY(int &cycles);
 };
 
 
@@ -390,4 +397,10 @@ static opcode operations[] = {
         {"DEC_ABSX", 0xDE, &MOS6502::DEC_ABSX},
         {"DEX", 0xCA, &MOS6502::DEX},
         {"DEY", 0x88, &MOS6502::DEY},
+        {"INC_ZERO", 0xE6, &MOS6502::INC_ZERO},
+        {"INC_ZEROX", 0xF6, &MOS6502::INC_ZEROX},
+        {"INC_ABS", 0xEE, &MOS6502::INC_ABS},
+        {"INC_ABSX", 0xFE, &MOS6502::INC_ABSX},
+        {"INX", 0xE8, &MOS6502::INX},
+        {"INY", 0xC8, &MOS6502::INY},
 };

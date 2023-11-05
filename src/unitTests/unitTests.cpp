@@ -59,5 +59,7 @@ int unitTests()
     test_NOP(cpu);
     std::cout << "------------------------------" << std::endl;
     test_DEC(cpu);
+    std::cout << "------------------------------" << std::endl;
+    test_INC(cpu);
     return 1;
 }
