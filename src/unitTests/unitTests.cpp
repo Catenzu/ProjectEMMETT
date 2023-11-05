@@ -55,5 +55,7 @@ int unitTests()
     test_EOR(cpu);
     std::cout << "------------------------------" << std::endl;
     test_ORA(cpu);
+    std::cout << "------------------------------" << std::endl;
+    test_NOP(cpu);
     return 1;
 }

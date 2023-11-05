@@ -230,6 +230,8 @@ public:
     void CLD(int &cycles);
     void SED(int &cycles);
 
+    void NOP(int &cycles);
+
     void BIT_ZERO(int &cycles);
     void BIT_ABS(int &cycles);
 };
@@ -374,4 +376,5 @@ static opcode operations[] = {
         {"CLV", 0xB8, &MOS6502::CLV},
         {"CLD", 0xD8, &MOS6502::CLD},
         {"SED", 0xF8, &MOS6502::SED},
+        {"NOP", 0xEA, &MOS6502::NOP}
 };
