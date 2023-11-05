@@ -52,5 +52,8 @@ int unitTests()
     std::cout << "------------------------------" << std::endl;
     test_BIT(cpu);
     std::cout << "------------------------------" << std::endl;
+    test_EOR(cpu);
+    std::cout << "------------------------------" << std::endl;
+    test_ORA(cpu);
     return 1;
 }

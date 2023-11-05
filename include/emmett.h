@@ -97,6 +97,24 @@ public:
     void AND_INDX(int &cycles);
     void AND_INDY(int &cycles);
 
+    void EOR_IM(int &cycles);
+    void EOR_ZERO(int &cycles);
+    void EOR_ZEROX(int &cycles);
+    void EOR_ABS(int &cycles);
+    void EOR_ABSX(int &cycles);
+    void EOR_ABSY(int &cycles);
+    void EOR_INDX(int &cycles);
+    void EOR_INDY(int &cycles);
+
+    void ORA_IM(int &cycles);
+    void ORA_ZERO(int &cycles);
+    void ORA_ZEROX(int &cycles);
+    void ORA_ABS(int &cycles);
+    void ORA_ABSX(int &cycles);
+    void ORA_ABSY(int &cycles);
+    void ORA_INDX(int &cycles);
+    void ORA_INDY(int &cycles);
+
     void ASL_ACC(int &cycles);
     void ASL_ZERO(int &cycles);
     void ASL_ZEROX(int &cycles);
@@ -241,6 +259,22 @@ static opcode operations[] = {
         {"AND_ABSY", 0x39, &MOS6502::AND_ABSY},
         {"AND_INDX", 0x21, &MOS6502::AND_INDX},
         {"AND_INDY", 0x31, &MOS6502::AND_INDY},
+        {"EOR_IM", 0x49, &MOS6502::EOR_IM},
+        {"EOR_ZERO", 0x45, &MOS6502::EOR_ZERO},
+        {"EOR_ZEROX", 0x55, &MOS6502::EOR_ZEROX},
+        {"EOR_ABS", 0x4D, &MOS6502::EOR_ABS},
+        {"EOR_ABSX", 0x5D, &MOS6502::EOR_ABSX},
+        {"EOR_ABSY", 0x59, &MOS6502::EOR_ABSY},
+        {"EOR_INDX", 0x41, &MOS6502::EOR_INDX},
+        {"EOR_INDY", 0x51, &MOS6502::EOR_INDY},
+        {"ORA_IM", 0x09, &MOS6502::ORA_IM},
+        {"ORA_ZERO", 0x05, &MOS6502::ORA_ZERO},
+        {"ORA_ZEROX", 0x15, &MOS6502::ORA_ZEROX},
+        {"ORA_ABS", 0x0D, &MOS6502::ORA_ABS},
+        {"ORA_ABSX", 0x1D, &MOS6502::ORA_ABSX},
+        {"ORA_ABSY", 0x19, &MOS6502::ORA_ABSY},
+        {"ORA_INDX", 0x01, &MOS6502::ORA_INDX},
+        {"ORA_INDY", 0x11, &MOS6502::ORA_INDY},
         {"ASL_ACC", 0x0A, &MOS6502::ASL_ACC},
         {"ASL_ZERO", 0x06, &MOS6502::ASL_ZERO},
         {"ASL_ZEROX", 0x16, &MOS6502::ASL_ZEROX},

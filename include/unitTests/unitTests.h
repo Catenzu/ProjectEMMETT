@@ -32,3 +32,5 @@ int test_CPY(MOS6502 &cpu);
 int test_SBC(MOS6502 &cpu);
 int test_SET_CLEAR_FLAGS(MOS6502 &cpu);
 int test_BIT(MOS6502 &cpu);
+int test_EOR(MOS6502 &cpu);
+int test_ORA(MOS6502 &cpu);
