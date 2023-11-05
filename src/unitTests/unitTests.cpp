@@ -57,5 +57,7 @@ int unitTests()
     test_ORA(cpu);
     std::cout << "------------------------------" << std::endl;
     test_NOP(cpu);
+    std::cout << "------------------------------" << std::endl;
+    test_DEC(cpu);
     return 1;
 }

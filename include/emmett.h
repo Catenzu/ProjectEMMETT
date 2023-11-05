@@ -234,6 +234,13 @@ public:
 
     void BIT_ZERO(int &cycles);
     void BIT_ABS(int &cycles);
+
+    void DEC_ZERO(int &cycles);
+    void DEC_ZEROX(int &cycles);
+    void DEC_ABS(int &cycles);
+    void DEC_ABSX(int &cycles);
+    void DEX(int &cycles);
+    void DEY(int &cycles);
 };
 
 
@@ -376,5 +383,11 @@ static opcode operations[] = {
         {"CLV", 0xB8, &MOS6502::CLV},
         {"CLD", 0xD8, &MOS6502::CLD},
         {"SED", 0xF8, &MOS6502::SED},
-        {"NOP", 0xEA, &MOS6502::NOP}
+        {"NOP", 0xEA, &MOS6502::NOP},
+        {"DEC_ZERO", 0xC6, &MOS6502::DEC_ZERO},
+        {"DEC_ZEROX", 0xD6, &MOS6502::DEC_ZEROX},
+        {"DEC_ABS", 0xCE, &MOS6502::DEC_ABS},
+        {"DEC_ABSX", 0xDE, &MOS6502::DEC_ABSX},
+        {"DEX", 0xCA, &MOS6502::DEX},
+        {"DEY", 0x88, &MOS6502::DEY},
 };
