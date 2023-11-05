@@ -254,6 +254,9 @@ public:
     void INC_ABSX(int &cycles);
     void INX(int &cycles);
     void INY(int &cycles);
+
+    void BRK(int &cycles);
+    void RTI(int &cycles);
 };
 
 
@@ -414,4 +417,6 @@ static opcode operations[] = {
         {"INC_ABSX", 0xFE, &MOS6502::INC_ABSX},
         {"INX", 0xE8, &MOS6502::INX},
         {"INY", 0xC8, &MOS6502::INY},
+        {"BRK", 0x00, &MOS6502::BRK},
+        {"RTI", 0x40, &MOS6502::RTI},
 };

@@ -63,5 +63,7 @@ int unitTests()
     test_DEC(cpu);
     std::cout << "------------------------------" << std::endl;
     test_INC(cpu);
+    std::cout << "------------------------------" << std::endl;
+    test_BRK(cpu);
     return 1;
 }

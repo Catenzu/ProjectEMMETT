@@ -38,3 +38,4 @@ int test_ORA(MOS6502 &cpu);
 int test_NOP(MOS6502 &cpu);
 int test_DEC(MOS6502 &cpu);
 int test_INC(MOS6502 &cpu);
+int test_BRK(MOS6502 &cpu);
