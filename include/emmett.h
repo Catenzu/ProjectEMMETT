@@ -9,6 +9,7 @@
 #include <map>
 #include <memory>
 #include <iostream>
+#include <bitset>
 
 int unitTests();
 
@@ -210,6 +211,9 @@ public:
     void CLV(int &cycles);
     void CLD(int &cycles);
     void SED(int &cycles);
+
+    void BIT_ZERO(int &cycles);
+    void BIT_ABS(int &cycles);
 };
 
 
@@ -242,6 +246,8 @@ static opcode operations[] = {
         {"ASL_ZEROX", 0x16, &MOS6502::ASL_ZEROX},
         {"ASL_ABS", 0x0E, &MOS6502::ASL_ABS},
         {"ASL_ABSX", 0x1E, &MOS6502::ASL_ABSX},
+        {"BIT_ZERO", 0x24, &MOS6502::BIT_ZERO},
+        {"BIT_ABS", 0x2C, &MOS6502::BIT_ABS},
         {"BCC", 0x90, &MOS6502::BCC},
         {"BCS", 0xB0, &MOS6502::BCS},
         {"BEQ", 0xF0, &MOS6502::BEQ},

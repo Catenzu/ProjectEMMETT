@@ -50,5 +50,7 @@ int unitTests()
     std::cout << "------------------------------" << std::endl;
     test_SET_CLEAR_FLAGS(cpu);
     std::cout << "------------------------------" << std::endl;
+    test_BIT(cpu);
+    std::cout << "------------------------------" << std::endl;
     return 1;
 }
