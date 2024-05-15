@@ -37,6 +37,10 @@ public:
 
     /*inDebug*/
     bool _isInDebugMode;
+    bool _debugPrint;
+
+    /*End*/
+    bool _return;
 
     /*Register*/
     Register _a; //Accumulator
@@ -77,6 +81,17 @@ public:
     uint16_t getAdressAbsoluteY(int &cycles);
     uint16_t getAdressIndirectX(int &cycles);
     uint16_t getAdressIndirectY(int &cycles);
+
+    /*Own Opcodes*/
+    void END(int &cycles);
+    void PRT_IM(int &cycles);
+    void PRT_ZERO(int &cycles);
+    void PRT_ZEROX(int &cycles);
+    void PRT_ABS(int &cycles);
+    void PRT_ABSX(int &cycles);
+    void PRT_ABSY(int &cycles);
+    void PRT_INDX(int &cycles);
+    void PRT_INDY(int &cycles);
 
     /*Opcode*/
     void ADC_IM(int &cycles);
@@ -257,6 +272,8 @@ public:
 
     void BRK(int &cycles);
     void RTI(int &cycles);
+
+    void PRT(int &cycles);
 };
 
 
@@ -419,4 +436,21 @@ static opcode operations[] = {
         {"INY", 0xC8, &MOS6502::INY},
         {"BRK", 0x00, &MOS6502::BRK},
         {"RTI", 0x40, &MOS6502::RTI},
+        {"PRT_IM", 0xFC, &MOS6502::PRT_IM},
+        {"PRT_ZERO", 0xFB, &MOS6502::PRT_ZERO},
+        {"PRT_ZEROX", 0xFA, &MOS6502::PRT_ZEROX},
+        {"PRT_ABS", 0xF2, &MOS6502::PRT_ABS},
+        {"PRT_ABSX", 0xEF, &MOS6502::PRT_ABSX},
+        {"PRT_ABSY", 0xEB, &MOS6502::PRT_ABSY},
+        {"PRT_INDX", 0xF3, &MOS6502::PRT_INDX},
+        {"PRT_INDY", 0xF4, &MOS6502::PRT_INDY},
+        {"END", 0xFF, &MOS6502::END}
+};
+
+class EEPROM {
+public:
+    EEPROM();
+
+    void loadFile(std::string path);
+    Register _memory[65536];
 };

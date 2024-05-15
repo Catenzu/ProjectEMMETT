@@ -13,7 +13,10 @@ MOS6502::MOS6502()
     _sr.set(0);
     _pc = 0;
     _isInDebugMode = false;
+    _debugPrint = false;
     _aluAdditionCarry = false;
+
+    _return = false;
 };
 
 void MOS6502::clear()
@@ -53,7 +56,12 @@ unsigned char MOS6502::fetch(int &cycles) //take one cycle
 
 int MOS6502::execute(int cycles)
 {
-    while (cycles > 0) {
+    bool infiniteLoop = false;
+
+    if (cycles == -1)
+        infiniteLoop = true;
+
+    while (cycles > 0 || infiniteLoop) {
         unsigned char opcode = fetch(cycles);
 
         for (auto &operation : operations)
@@ -63,6 +71,11 @@ int MOS6502::execute(int cycles)
             }
         if (_isInDebugMode) //debug mode, to see if it's the exact number of cycles
             break;
+        if (_return) {
+            _return = false;
+            std::cout << "Return " << (int)_a._value << std::endl;
+            return cycles;
+        }
     }
     return cycles;
 }
