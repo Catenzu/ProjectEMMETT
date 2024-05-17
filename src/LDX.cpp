@@ -11,7 +11,8 @@ void MOS6502::LDX_IM(int &cycles)
     _x.set(value);
     setNegativeFlagFromByte(value);
     setZeroFlagFromByte(value);
-    std::cout << "--LDX Immediate: " << (int) _x._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--LDX Immediate: " << (int) _x._value << std::endl;
 }
 
 void MOS6502::LDX_ZERO(int &cycles)
@@ -21,7 +22,8 @@ void MOS6502::LDX_ZERO(int &cycles)
     _x.set(value);
     setNegativeFlagFromByte(value);
     setZeroFlagFromByte(value);
-    std::cout << "--LDX Zero Page: " << (int) _x._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--LDX Zero Page: " << (int) _x._value << std::endl;
 }
 
 void MOS6502::LDX_ZEROY(int &cycles)
@@ -31,7 +33,8 @@ void MOS6502::LDX_ZEROY(int &cycles)
     _x.set(value);
     setNegativeFlagFromByte(value);
     setZeroFlagFromByte(value);
-    std::cout << "--LDX ZeroY Page: " << (int) _x._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--LDX ZeroY Page: " << (int) _x._value << std::endl;
 }
 
 void MOS6502::LDX_ABS(int &cycles)
@@ -41,7 +44,8 @@ void MOS6502::LDX_ABS(int &cycles)
     _x.set(value);
     setNegativeFlagFromByte(value);
     setZeroFlagFromByte(value);
-    std::cout << "--LDX Absolute: " << (int) _x._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--LDX Absolute: " << (int) _x._value << std::endl;
 }
 
 void MOS6502::LDX_ABSY(int &cycles)
@@ -51,5 +55,6 @@ void MOS6502::LDX_ABSY(int &cycles)
     _x.set(value);
     setNegativeFlagFromByte(value);
     setZeroFlagFromByte(value);
-    std::cout << "--LDX Absolute Y: " << (int) _x._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--LDX Absolute Y: " << (int) _x._value << std::endl;
 }

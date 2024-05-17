@@ -19,7 +19,8 @@ void MOS6502::BCC(int &cycles)
             cycles--;
         cycles--;
     }
-    std::cout << "--BCC: " << valueSigned << std::endl;
+    if (_debugPrint)
+        std::cout << "--BCC: " << valueSigned << std::endl;
 }
 
 void MOS6502::BCS(int &cycles)
@@ -37,7 +38,8 @@ void MOS6502::BCS(int &cycles)
             cycles--;
         cycles--;
     }
-    std::cout << "--BCS: " << valueSigned << std::endl;
+    if (_debugPrint)
+        std::cout << "--BCS: " << valueSigned << std::endl;
 }
 
 void MOS6502::BEQ(int &cycles)
@@ -55,7 +57,8 @@ void MOS6502::BEQ(int &cycles)
             cycles--;
         cycles--;
     }
-    std::cout << "--BEQ: " << valueSigned << std::endl;
+    if (_debugPrint)
+        std::cout << "--BEQ: " << valueSigned << std::endl;
 }
 
 void MOS6502::BMI(int &cycles)
@@ -73,7 +76,8 @@ void MOS6502::BMI(int &cycles)
             cycles--;
         cycles--;
     }
-    std::cout << "--BMI: " << valueSigned << std::endl;
+    if (_debugPrint)
+        std::cout << "--BMI: " << valueSigned << std::endl;
 }
 
 void MOS6502::BNE(int &cycles)
@@ -91,7 +95,8 @@ void MOS6502::BNE(int &cycles)
             cycles--;
         cycles--;
     }
-    std::cout << "--BNE: " << valueSigned << std::endl;
+    if (_debugPrint)
+        std::cout << "--BNE: " << valueSigned << std::endl;
 }
 
 void MOS6502::BPL(int &cycles)
@@ -109,7 +114,8 @@ void MOS6502::BPL(int &cycles)
             cycles--;
         cycles--;
     }
-    std::cout << "--BPL: " << valueSigned << std::endl;
+    if (_debugPrint)
+        std::cout << "--BPL: " << valueSigned << std::endl;
 }
 
 void MOS6502::BVC(int &cycles)
@@ -127,7 +133,8 @@ void MOS6502::BVC(int &cycles)
             cycles--;
         cycles--;
     }
-    std::cout << "--BVC: " << valueSigned << std::endl;
+    if (_debugPrint)
+        std::cout << "--BVC: " << valueSigned << std::endl;
 }
 
 void MOS6502::BVS(int &cycles)
@@ -145,5 +152,6 @@ void MOS6502::BVS(int &cycles)
             cycles--;
         cycles--;
     }
-    std::cout << "--BVS: " << valueSigned << std::endl;
+    if (_debugPrint)
+        std::cout << "--BVS: " << valueSigned << std::endl;
 }

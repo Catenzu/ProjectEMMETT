@@ -13,7 +13,8 @@ void MOS6502::DEC_ABS(int &cycles)
     setNegativeFlagFromByte(value);
     setZeroFlagFromByte(value);
     _memory[address]._value = value;
-    std::cout << "--DEC ABS: " << (int) _memory[address]._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--DEC ABS: " << (int) _memory[address]._value << std::endl;
 }
 
 void MOS6502::DEC_ABSX(int &cycles)
@@ -25,7 +26,8 @@ void MOS6502::DEC_ABSX(int &cycles)
     setNegativeFlagFromByte(value);
     setZeroFlagFromByte(value);
     _memory[address]._value = value;
-    std::cout << "--DEC ABSX: " << (int) _memory[address]._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--DEC ABSX: " << (int) _memory[address]._value << std::endl;
 }
 
 void MOS6502::DEC_ZERO(int &cycles)
@@ -38,7 +40,8 @@ void MOS6502::DEC_ZERO(int &cycles)
     setNegativeFlagFromByte(value);
     setZeroFlagFromByte(value);
     _memory[address]._value = value;
-    std::cout << "--DEC ZERO: " << (int) _memory[address]._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--DEC ZERO: " << (int) _memory[address]._value << std::endl;
 }
 
 void MOS6502::DEC_ZEROX(int &cycles)
@@ -50,7 +53,8 @@ void MOS6502::DEC_ZEROX(int &cycles)
     setNegativeFlagFromByte(value);
     setZeroFlagFromByte(value);
     _memory[address]._value = value;
-    std::cout << "--DEC ZEROX: " << (int) _memory[address]._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--DEC ZEROX: " << (int) _memory[address]._value << std::endl;
 }
 
 void MOS6502::DEX(int &cycles)
@@ -59,7 +63,8 @@ void MOS6502::DEX(int &cycles)
     cycles--;
     setNegativeFlagFromByte(_x._value);
     setZeroFlagFromByte(_x._value);
-    std::cout << "--DEX: " << (int) _x._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--DEX: " << (int) _x._value << std::endl;
 }
 
 void MOS6502::DEY(int &cycles)
@@ -68,5 +73,6 @@ void MOS6502::DEY(int &cycles)
     cycles--;
     setNegativeFlagFromByte(_y._value);
     setZeroFlagFromByte(_y._value);
-    std::cout << "--DEY: " << (int) _y._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--DEY: " << (int) _y._value << std::endl;
 }

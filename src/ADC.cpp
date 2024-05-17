@@ -38,7 +38,8 @@ void MOS6502::ADC_IM(int &cycles)
     }
 
     _a.set(result8);
-    std::cout << "--ADC IM: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--ADC IM: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::ADC_ZERO(int &cycles)
@@ -72,7 +73,8 @@ void MOS6502::ADC_ZERO(int &cycles)
     }
 
     _a.set(result8);
-    std::cout << "--ADC ZERO: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--ADC ZERO: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::ADC_ZEROX(int &cycles)
@@ -106,7 +108,8 @@ void MOS6502::ADC_ZEROX(int &cycles)
     }
 
     _a.set(result8);
-    std::cout << "--ADC ZEROX: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--ADC ZEROX: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::ADC_ABS(int &cycles) //ne fonctionne pas correctement je sais pas pourquoi
@@ -140,7 +143,8 @@ void MOS6502::ADC_ABS(int &cycles) //ne fonctionne pas correctement je sais pas 
     }
 
     _a.set(result8);
-    std::cout << "--ADC ABS: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--ADC ABS: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::ADC_ABSX(int &cycles)
@@ -174,7 +178,8 @@ void MOS6502::ADC_ABSX(int &cycles)
     }
 
     _a.set(result8);
-    std::cout << "--ADC ABSX: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--ADC ABSX: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::ADC_ABSY(int &cycles)
@@ -208,7 +213,8 @@ void MOS6502::ADC_ABSY(int &cycles)
     }
 
     _a.set(result8);
-    std::cout << "--ADC ABSY: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--ADC ABSY: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::ADC_INDX(int &cycles)
@@ -243,7 +249,8 @@ void MOS6502::ADC_INDX(int &cycles)
     }
 
     _a.set(result8);
-    std::cout << "--ADC INDX: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--ADC INDX: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::ADC_INDY(int &cycles)
@@ -278,5 +285,6 @@ void MOS6502::ADC_INDY(int &cycles)
     }
 
     _a.set(result8);
-    std::cout << "--ADC INDY: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--ADC INDY: " << (int) _a._value << std::endl;
 }

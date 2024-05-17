@@ -23,7 +23,8 @@ void MOS6502::ROL_ACC(int &cycles)
     _a.set(result);
     setNegativeFlagFromByte(result);
     setZeroFlagFromByte(result);
-    std::cout << "--ROL Accumulator: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--ROL Accumulator: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::ROL_ZERO(int &cycles)
@@ -45,7 +46,8 @@ void MOS6502::ROL_ZERO(int &cycles)
 
     setMemory(address, result, cycles);
     setNegativeFlagFromByte(result);
-    std::cout << "--ROL Zero Page: " << (int) _memory[address]._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--ROL Zero Page: " << (int) _memory[address]._value << std::endl;
 }
 
 void MOS6502::ROL_ZEROX(int &cycles)
@@ -67,7 +69,8 @@ void MOS6502::ROL_ZEROX(int &cycles)
 
     setMemory(address, result, cycles);
     setNegativeFlagFromByte(result);
-    std::cout << "--ROL Zero Page X: " << (int) _memory[address]._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--ROL Zero Page X: " << (int) _memory[address]._value << std::endl;
 }
 
 void MOS6502::ROL_ABS(int &cycles)
@@ -89,7 +92,8 @@ void MOS6502::ROL_ABS(int &cycles)
 
     setMemory(address, result, cycles);
     setNegativeFlagFromByte(result);
-    std::cout << "--ROL Absolute: " << (int) _memory[address]._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--ROL Absolute: " << (int) _memory[address]._value << std::endl;
 }
 
 void MOS6502::ROL_ABSX(int &cycles)
@@ -113,5 +117,6 @@ void MOS6502::ROL_ABSX(int &cycles)
 
     setMemory(address, result, cycles);
     setNegativeFlagFromByte(result);
-    std::cout << "--ROL Absolute X: " << (int) _memory[address]._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--ROL Absolute X: " << (int) _memory[address]._value << std::endl;
 }

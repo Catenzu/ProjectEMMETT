@@ -11,7 +11,8 @@ void MOS6502::PHA(int &cycles)
     _sp._value--;
     cycles--;
 
-    std::cout << "--PHA: " << (int) _sp._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--PHA: " << (int) _sp._value << std::endl;
 }
 
 void MOS6502::PHP(int &cycles)
@@ -21,7 +22,8 @@ void MOS6502::PHP(int &cycles)
     _sp._value--;
     cycles--;
 
-    std::cout << "--PHP: " << (int) _sp._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--PHP: " << (int) _sp._value << std::endl;
 }
 
 void MOS6502::PLA(int &cycles)
@@ -32,7 +34,8 @@ void MOS6502::PLA(int &cycles)
     cycles--;
     cycles--;
 
-    std::cout << "--PLA: " << (int) _sp._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--PLA: " << (int) _sp._value << std::endl;
 }
 
 void MOS6502::PLP(int &cycles)
@@ -43,5 +46,6 @@ void MOS6502::PLP(int &cycles)
     cycles--;
     cycles--;
 
-    std::cout << "--PLP: " << (int) _sp._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--PLP: " << (int) _sp._value << std::endl;
 }

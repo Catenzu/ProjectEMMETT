@@ -15,7 +15,8 @@ void MOS6502::EOR_IM(int &cycles)
     setNegativeFlagFromByte(result);
     setZeroFlagFromByte(result);
     _a.set(result);
-    std::cout << "--EOR: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--EOR: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::EOR_ZERO(int &cycles)
@@ -26,7 +27,8 @@ void MOS6502::EOR_ZERO(int &cycles)
     setNegativeFlagFromByte(result);
     setZeroFlagFromByte(result);
     _a.set(result);
-    std::cout << "--EOR ZERO: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--EOR ZERO: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::EOR_ZEROX(int &cycles)
@@ -37,7 +39,8 @@ void MOS6502::EOR_ZEROX(int &cycles)
     setNegativeFlagFromByte(result);
     setZeroFlagFromByte(result);
     _a.set(result);
-    std::cout << "--EOR ZEROX: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--EOR ZEROX: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::EOR_ABS(int &cycles)
@@ -48,7 +51,8 @@ void MOS6502::EOR_ABS(int &cycles)
     setNegativeFlagFromByte(result);
     setZeroFlagFromByte(result);
     _a.set(result);
-    std::cout << "--EOR ABS: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--EOR ABS: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::EOR_ABSX(int &cycles)
@@ -59,7 +63,8 @@ void MOS6502::EOR_ABSX(int &cycles)
     setZeroFlagFromByte(result);
     setNegativeFlagFromByte(result);
     _a.set(result);
-    std::cout << "--EOR ABSX: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--EOR ABSX: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::EOR_ABSY(int &cycles)
@@ -70,7 +75,8 @@ void MOS6502::EOR_ABSY(int &cycles)
     setNegativeFlagFromByte(result);
     setZeroFlagFromByte(result);
     _a.set(result);
-    std::cout << "--EOR ABSY: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--EOR ABSY: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::EOR_INDX(int &cycles)
@@ -81,7 +87,8 @@ void MOS6502::EOR_INDX(int &cycles)
     setNegativeFlagFromByte(result);
     setZeroFlagFromByte(result);
     _a.set(result);
-    std::cout << "--EOR Indirect X: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--EOR Indirect X: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::EOR_INDY(int &cycles)
@@ -92,5 +99,6 @@ void MOS6502::EOR_INDY(int &cycles)
     setNegativeFlagFromByte(result);
     setZeroFlagFromByte(result);
     _a.set(result);
-    std::cout << "--EOR Indirect Y: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--EOR Indirect Y: " << (int) _a._value << std::endl;
 }

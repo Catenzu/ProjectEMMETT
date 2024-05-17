@@ -9,7 +9,8 @@ void MOS6502::STA_ZERO(int &cycles)
     unsigned char address = fetch(cycles); //1cycle
     setMemory(address, _a._value,cycles); //1cycle
 
-    std::cout << "--STA Zero Page: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--STA Zero Page: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::STA_ZEROX(int &cycles)
@@ -19,7 +20,8 @@ void MOS6502::STA_ZEROX(int &cycles)
     address = aluAddition(address, xV, cycles); //1cycle
     setMemory(address, _a._value,cycles); //1cycle
 
-    std::cout << "--STA ZeroX Page: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--STA ZeroX Page: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::STA_ABS(int &cycles)
@@ -29,7 +31,8 @@ void MOS6502::STA_ABS(int &cycles)
     uint16_t address = ((uint16_t)adress2 * 256) + (uint16_t)address1;
     setMemory(address, _a._value, cycles); //1cycle
 
-    std::cout << "--STA Absolute: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--STA Absolute: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::STA_ABSX(int &cycles)
@@ -44,7 +47,8 @@ void MOS6502::STA_ABSX(int &cycles)
         completeAddress += 0x0100;
     setMemory(completeAddress, _a._value,cycles); //1cycle
 
-    std::cout << "--STA Absolute X: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--STA Absolute X: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::STA_ABSY(int &cycles)
@@ -59,7 +63,8 @@ void MOS6502::STA_ABSY(int &cycles)
         completeAddress += 0x0100;
     setMemory(completeAddress, _a._value,cycles); //1cycle
 
-    std::cout << "--STA Absolute Y: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--STA Absolute Y: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::STA_INDX(int &cycles)
@@ -74,7 +79,8 @@ void MOS6502::STA_INDX(int &cycles)
 
     setMemory(address, _a._value, cycles); //1cycle
 
-    std::cout << "--STA Indirect X: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--STA Indirect X: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::STA_INDY(int &cycles)
@@ -91,5 +97,6 @@ void MOS6502::STA_INDY(int &cycles)
         completeAddress += 0x0100;
     setMemory(completeAddress, _a._value, cycles); //1cycle
 
-    std::cout << "--STA Indirect Y: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--STA Indirect Y: " << (int) _a._value << std::endl;
 }

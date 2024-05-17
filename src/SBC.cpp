@@ -31,7 +31,8 @@ void MOS6502::SBC_IM(int &cycles)
     }
     _a.set(result8);
 
-    std::cout << "--SBC IM: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--SBC IM: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::SBC_ZERO(int &cycles)
@@ -57,7 +58,8 @@ void MOS6502::SBC_ZERO(int &cycles)
     }
     _a.set(result8);
 
-    std::cout << "--SBC ZERO: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--SBC ZERO: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::SBC_ZEROX(int &cycles)
@@ -83,7 +85,8 @@ void MOS6502::SBC_ZEROX(int &cycles)
     }
     _a.set(result8);
 
-    std::cout << "--SBC ZEROX: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--SBC ZEROX: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::SBC_ABS(int &cycles)
@@ -109,7 +112,8 @@ void MOS6502::SBC_ABS(int &cycles)
     }
     _a.set(result8);
 
-    std::cout << "--SBC ABS: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--SBC ABS: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::SBC_ABSX(int &cycles)
@@ -135,7 +139,8 @@ void MOS6502::SBC_ABSX(int &cycles)
     }
     _a.set(result8);
 
-    std::cout << "--SBC ABSX: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--SBC ABSX: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::SBC_ABSY(int &cycles)
@@ -161,7 +166,8 @@ void MOS6502::SBC_ABSY(int &cycles)
     }
     _a.set(result8);
 
-    std::cout << "--SBC ABSY: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--SBC ABSY: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::SBC_INDX(int &cycles)
@@ -187,7 +193,8 @@ void MOS6502::SBC_INDX(int &cycles)
     }
     _a.set(result8);
 
-    std::cout << "--SBC INDX: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--SBC INDX: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::SBC_INDY(int &cycles)
@@ -213,5 +220,6 @@ void MOS6502::SBC_INDY(int &cycles)
     }
     _a.set(result8);
 
-    std::cout << "--SBC INDY: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--SBC INDY: " << (int) _a._value << std::endl;
 }

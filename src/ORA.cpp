@@ -15,7 +15,8 @@ void MOS6502::ORA_IM(int &cycles)
     setNegativeFlagFromByte(result);
     setZeroFlagFromByte(result);
     _a.set(result);
-    std::cout << "--ORA: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--ORA: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::ORA_ZERO(int &cycles)
@@ -26,7 +27,8 @@ void MOS6502::ORA_ZERO(int &cycles)
     setNegativeFlagFromByte(result);
     setZeroFlagFromByte(result);
     _a.set(result);
-    std::cout << "--ORA ZERO: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--ORA ZERO: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::ORA_ZEROX(int &cycles)
@@ -37,7 +39,8 @@ void MOS6502::ORA_ZEROX(int &cycles)
     setNegativeFlagFromByte(result);
     setZeroFlagFromByte(result);
     _a.set(result);
-    std::cout << "--ORA ZEROX: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--ORA ZEROX: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::ORA_ABS(int &cycles)
@@ -48,7 +51,8 @@ void MOS6502::ORA_ABS(int &cycles)
     setNegativeFlagFromByte(result);
     setZeroFlagFromByte(result);
     _a.set(result);
-    std::cout << "--ORA ABS: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--ORA ABS: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::ORA_ABSX(int &cycles)
@@ -59,7 +63,8 @@ void MOS6502::ORA_ABSX(int &cycles)
     setZeroFlagFromByte(result);
     setNegativeFlagFromByte(result);
     _a.set(result);
-    std::cout << "--ORA ABSX: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--ORA ABSX: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::ORA_ABSY(int &cycles)
@@ -70,7 +75,8 @@ void MOS6502::ORA_ABSY(int &cycles)
     setNegativeFlagFromByte(result);
     setZeroFlagFromByte(result);
     _a.set(result);
-    std::cout << "--ORA ABSY: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--ORA ABSY: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::ORA_INDX(int &cycles)
@@ -81,7 +87,8 @@ void MOS6502::ORA_INDX(int &cycles)
     setNegativeFlagFromByte(result);
     setZeroFlagFromByte(result);
     _a.set(result);
-    std::cout << "--ORA Indirect X: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--ORA Indirect X: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::ORA_INDY(int &cycles)
@@ -92,5 +99,6 @@ void MOS6502::ORA_INDY(int &cycles)
     setNegativeFlagFromByte(result);
     setZeroFlagFromByte(result);
     _a.set(result);
-    std::cout << "--ORA Indirect Y: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--ORA Indirect Y: " << (int) _a._value << std::endl;
 }

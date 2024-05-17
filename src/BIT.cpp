@@ -12,7 +12,8 @@ void MOS6502::BIT_ABS(int &cycles)
     setZeroFlag(!result);
     setNegativeFlag(result & 0b10000000);
     setOverflowFlag(value & 0b01000000);
-    std::cout << "--BIT_ABS: " << std::bitset<8>(result) << std::endl;
+    if (_debugPrint)
+        std::cout << "--BIT_ABS: " << std::bitset<8>(result) << std::endl;
 }
 
 void MOS6502::BIT_ZERO(int &cycles)
@@ -23,5 +24,6 @@ void MOS6502::BIT_ZERO(int &cycles)
     setZeroFlag(!result);
     setNegativeFlag(result & 0b10000000);
     setOverflowFlag(value & 0b01000000);
-    std::cout << "--BIT_ABS: " << std::bitset<8>(result) << std::endl;
+    if (_debugPrint)
+        std::cout << "--BIT_ABS: " << std::bitset<8>(result) << std::endl;
 }

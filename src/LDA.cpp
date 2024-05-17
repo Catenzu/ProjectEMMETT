@@ -11,7 +11,8 @@ void MOS6502::LDA_IM(int &cycles)
     _a.set(value);
     setNegativeFlagFromByte(value);
     setZeroFlagFromByte(value);
-    std::cout << "--LDA Immediate: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--LDA Immediate: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::LDA_ZERO(int &cycles)
@@ -21,7 +22,8 @@ void MOS6502::LDA_ZERO(int &cycles)
     _a.set(value);
     setNegativeFlagFromByte(value);
     setZeroFlagFromByte(value);
-    std::cout << "--LDA Zero Page: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--LDA Zero Page: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::LDA_ZEROX(int &cycles)
@@ -31,7 +33,8 @@ void MOS6502::LDA_ZEROX(int &cycles)
     _a.set(value);
     setNegativeFlagFromByte(value);
     setZeroFlagFromByte(value);
-    std::cout << "--LDA ZeroX Page: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--LDA ZeroX Page: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::LDA_ABS(int &cycles)
@@ -41,7 +44,8 @@ void MOS6502::LDA_ABS(int &cycles)
     _a.set(value);
     setNegativeFlagFromByte(value);
     setZeroFlagFromByte(value);
-    std::cout << "--LDA Absolute: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--LDA Absolute: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::LDA_ABSX(int &cycles)
@@ -51,7 +55,8 @@ void MOS6502::LDA_ABSX(int &cycles)
     _a.set(value);
     setNegativeFlagFromByte(value);
     setZeroFlagFromByte(value);
-    std::cout << "--LDA Absolute X: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--LDA Absolute X: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::LDA_ABSY(int &cycles)
@@ -61,7 +66,8 @@ void MOS6502::LDA_ABSY(int &cycles)
     _a.set(value);
     setNegativeFlagFromByte(value);
     setZeroFlagFromByte(value);
-    std::cout << "--LDA Absolute Y: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--LDA Absolute Y: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::LDA_INDX(int &cycles)
@@ -71,7 +77,8 @@ void MOS6502::LDA_INDX(int &cycles)
     _a.set(value);
     setNegativeFlagFromByte(value);
     setZeroFlagFromByte(value);
-    std::cout << "--LDA Indirect X: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--LDA Indirect X: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::LDA_INDY(int &cycles)
@@ -81,5 +88,6 @@ void MOS6502::LDA_INDY(int &cycles)
     _a.set(value);
     setNegativeFlagFromByte(value);
     setZeroFlagFromByte(value);
-    std::cout << "--LDA Indirect Y: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--LDA Indirect Y: " << (int) _a._value << std::endl;
 }

@@ -28,7 +28,8 @@ void MOS6502::BRK(int &cycles)
 
     _pc = address;
     cycles--; //1cycle
-    std::cout << "--BRK Absolute: " << (int) _pc << std::endl;
+    if (_debugPrint)
+        std::cout << "--BRK Absolute: " << (int) _pc << std::endl;
 }
 
 void MOS6502::RTI(int &cycles)
@@ -47,5 +48,6 @@ void MOS6502::RTI(int &cycles)
     uint16_t pc = ((uint16_t)pcHigh * 256) + (uint16_t)pcLow;
     _pc = pc + 1;
 
-    std::cout << "--RTI: " << (int) _pc << std::endl;
+    if (_debugPrint)
+        std::cout << "--RTI: " << (int) _pc << std::endl;
 }

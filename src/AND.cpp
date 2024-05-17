@@ -15,7 +15,8 @@ void MOS6502::AND_IM(int &cycles)
     setNegativeFlagFromByte(result);
     setZeroFlagFromByte(result);
     _a.set(result);
-    std::cout << "--AND: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--AND: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::AND_ZERO(int &cycles)
@@ -26,7 +27,8 @@ void MOS6502::AND_ZERO(int &cycles)
     setNegativeFlagFromByte(result);
     setZeroFlagFromByte(result);
     _a.set(result);
-    std::cout << "--AND ZERO: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--AND ZERO: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::AND_ZEROX(int &cycles)
@@ -37,7 +39,8 @@ void MOS6502::AND_ZEROX(int &cycles)
     setNegativeFlagFromByte(result);
     setZeroFlagFromByte(result);
     _a.set(result);
-    std::cout << "--AND ZEROX: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--AND ZEROX: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::AND_ABS(int &cycles)
@@ -48,7 +51,8 @@ void MOS6502::AND_ABS(int &cycles)
     setNegativeFlagFromByte(result);
     setZeroFlagFromByte(result);
     _a.set(result);
-    std::cout << "--AND ABS: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--AND ABS: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::AND_ABSX(int &cycles)
@@ -59,7 +63,8 @@ void MOS6502::AND_ABSX(int &cycles)
     setZeroFlagFromByte(result);
     setNegativeFlagFromByte(result);
     _a.set(result);
-    std::cout << "--AND ABSX: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--AND ABSX: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::AND_ABSY(int &cycles)
@@ -70,7 +75,8 @@ void MOS6502::AND_ABSY(int &cycles)
     setNegativeFlagFromByte(result);
     setZeroFlagFromByte(result);
     _a.set(result);
-    std::cout << "--AND ABSY: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--AND ABSY: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::AND_INDX(int &cycles)
@@ -81,7 +87,8 @@ void MOS6502::AND_INDX(int &cycles)
     setNegativeFlagFromByte(result);
     setZeroFlagFromByte(result);
     _a.set(result);
-    std::cout << "--AND Indirect X: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--AND Indirect X: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::AND_INDY(int &cycles)
@@ -92,5 +99,6 @@ void MOS6502::AND_INDY(int &cycles)
     setNegativeFlagFromByte(result);
     setZeroFlagFromByte(result);
     _a.set(result);
-    std::cout << "--AND Indirect Y: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--AND Indirect Y: " << (int) _a._value << std::endl;
 }

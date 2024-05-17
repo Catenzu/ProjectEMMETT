@@ -11,7 +11,8 @@ void MOS6502::JMP_ABS(int &cycles)
 
     uint16_t address = ((uint16_t)high * 256) + (uint16_t)low;
     _pc = address;
-    std::cout << "--JMP Absolute: " << (int) _pc << std::endl;
+    if (_debugPrint)
+        std::cout << "--JMP Absolute: " << (int) _pc << std::endl;
 }
 
 void MOS6502::JMP_IND(int &cycles)
@@ -26,7 +27,8 @@ void MOS6502::JMP_IND(int &cycles)
     uint16_t newHigh = getMemory(address, cycles); //1cycle
     uint16_t newAddress = ((uint16_t)newHigh * 256) + (uint16_t)newLow;
     _pc = newAddress;
-    std::cout << "--JMP Indirect: " << (int) _pc << std::endl;
+    if (_debugPrint)
+        std::cout << "--JMP Indirect: " << (int) _pc << std::endl;
 }
 
 void MOS6502::JSR_ABS(int &cycles)
@@ -48,7 +50,8 @@ void MOS6502::JSR_ABS(int &cycles)
 
     _pc = address;
     cycles--; //1cycle
-    std::cout << "--JSR Absolute: " << (int) _pc << std::endl;
+    if (_debugPrint)
+        std::cout << "--JSR Absolute: " << (int) _pc << std::endl;
 }
 
 void MOS6502::RTS(int &cycles)
@@ -65,5 +68,6 @@ void MOS6502::RTS(int &cycles)
     cycles--; //1cycle
     _pc = pc + 1;
 
-    std::cout << "--RTS: " << (int) _pc << std::endl;
+    if (_debugPrint)
+        std::cout << "--RTS: " << (int) _pc << std::endl;
 }

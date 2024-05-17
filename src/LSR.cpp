@@ -22,7 +22,8 @@ void MOS6502::LSR_ACC(int &cycles)
     _a.set(result);
     setNegativeFlagFromByte(result);
     setZeroFlagFromByte(result);
-    std::cout << "--LSR Accumulator: " << (int) _a._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--LSR Accumulator: " << (int) _a._value << std::endl;
 }
 
 void MOS6502::LSR_ZERO(int &cycles)
@@ -40,7 +41,8 @@ void MOS6502::LSR_ZERO(int &cycles)
 
     setMemory(address, result, cycles);
     setNegativeFlagFromByte(result);
-    std::cout << "--LSR Zero Page: " << (int) _memory[address]._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--LSR Zero Page: " << (int) _memory[address]._value << std::endl;
 }
 
 void MOS6502::LSR_ZEROX(int &cycles)
@@ -58,7 +60,8 @@ void MOS6502::LSR_ZEROX(int &cycles)
 
     setMemory(address, result, cycles);
     setNegativeFlagFromByte(result);
-    std::cout << "--LSR Zero Page X: " << (int) _memory[address]._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--LSR Zero Page X: " << (int) _memory[address]._value << std::endl;
 }
 
 void MOS6502::LSR_ABS(int &cycles)
@@ -76,7 +79,8 @@ void MOS6502::LSR_ABS(int &cycles)
 
     setMemory(address, result, cycles);
     setNegativeFlagFromByte(result);
-    std::cout << "--LSR Absolute: " << (int) _memory[address]._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--LSR Absolute: " << (int) _memory[address]._value << std::endl;
 }
 
 void MOS6502::LSR_ABSX(int &cycles)
@@ -96,5 +100,6 @@ void MOS6502::LSR_ABSX(int &cycles)
 
     setMemory(address, result, cycles);
     setNegativeFlagFromByte(result);
-    std::cout << "--LSR Absolute X: " << (int) _memory[address]._value << std::endl;
+    if (_debugPrint)
+        std::cout << "--LSR Absolute X: " << (int) _memory[address]._value << std::endl;
 }

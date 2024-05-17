@@ -7,5 +7,6 @@
 void MOS6502::NOP(int &cycles)
 {
     cycles--;
-    std::cout << "--NOP" << std::endl;
+    if (_debugPrint)
+        std::cout << "--NOP" << std::endl;
 }

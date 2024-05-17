@@ -20,7 +20,8 @@ void MOS6502::CPX_IM(int &cycles)
 
     unsigned char result = _x._value - value;
     setNegativeFlagFromByte(result);
-    std::cout << "--CPX Immediate: " << (int) result << std::endl;
+    if (_debugPrint)
+        std::cout << "--CPX Immediate: " << (int) result << std::endl;
 }
 
 void MOS6502::CPX_ZERO(int &cycles)
@@ -39,7 +40,8 @@ void MOS6502::CPX_ZERO(int &cycles)
 
     unsigned char result = _x._value - value;
     setNegativeFlagFromByte(result);
-    std::cout << "--CPX Zero Page: " << (int) result << std::endl;
+    if (_debugPrint)
+        std::cout << "--CPX Zero Page: " << (int) result << std::endl;
 }
 
 void MOS6502::CPX_ABS(int &cycles)
@@ -58,5 +60,6 @@ void MOS6502::CPX_ABS(int &cycles)
 
     unsigned char result = _x._value - value;
     setNegativeFlagFromByte(result);
-    std::cout << "--CPX Absolute: " << (int) result << std::endl;
+    if (_debugPrint)
+        std::cout << "--CPX Absolute: " << (int) result << std::endl;
 }

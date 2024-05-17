@@ -20,7 +20,8 @@ void MOS6502::CPY_IM(int &cycles)
 
     unsigned char result = _y._value - value;
     setNegativeFlagFromByte(result);
-    std::cout << "--CPY Immediate: " << (int) result << std::endl;
+    if (_debugPrint)
+        std::cout << "--CPY Immediate: " << (int) result << std::endl;
 }
 
 void MOS6502::CPY_ZERO(int &cycles)
@@ -39,7 +40,8 @@ void MOS6502::CPY_ZERO(int &cycles)
 
     unsigned char result = _y._value - value;
     setNegativeFlagFromByte(result);
-    std::cout << "--CPY Zero Page: " << (int) result << std::endl;
+    if (_debugPrint)
+        std::cout << "--CPY Zero Page: " << (int) result << std::endl;
 }
 
 void MOS6502::CPY_ABS(int &cycles)
@@ -58,5 +60,6 @@ void MOS6502::CPY_ABS(int &cycles)
 
     unsigned char result = _y._value - value;
     setNegativeFlagFromByte(result);
-    std::cout << "--CPY Absolute: " << (int) result << std::endl;
+    if (_debugPrint)
+        std::cout << "--CPY Absolute: " << (int) result << std::endl;
 }
